@@ -1,9 +1,7 @@
-import { NativeModules } from 'react-native';
+//components
+import Button from './components/Button';
+import ThemeProvider from './components/ThemeProvider';
+//utils
+import defaultTheme from './styled-components/theme';
 
-type ToopagoUiType = {
-  getDeviceName(): Promise<string>;
-};
-
-const { ToopagoUi } = NativeModules;
-
-export default ToopagoUi as ToopagoUiType;
+export { Button, defaultTheme, ThemeProvider };

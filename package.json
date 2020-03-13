@@ -43,6 +43,7 @@
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.19",
     "@types/react-native": "0.61.10",
+    "@types/styled-components": "^5.0.1",
     "commitlint": "^8.3.4",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -89,7 +90,10 @@
       ]
     }
   },
-  "eslintIgnore": ["node_modules/", "lib/"],
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
   "prettier": {
     "singleQuote": true,
     "tabWidth": 2,
@@ -116,6 +120,13 @@
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": ["commonjs", "module", "typescript"]
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "dependencies": {
+    "styled-components": "^5.0.1"
   }
 }

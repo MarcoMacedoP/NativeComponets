@@ -1,25 +1,33 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import ToopagoUi from 'react-native-toopago-ui';
+import { StyleSheet, View } from 'react-native';
+import { Button, ThemeProvider } from 'react-native-toopago-ui';
 
 export default function App() {
-  const [deviceName, setDeviceName] = React.useState('');
-
-  React.useEffect(() => {
-    ToopagoUi.getDeviceName().then(setDeviceName);
-  }, []);
-
+  const handleClick = () => console.log('click');
   return (
     <View style={styles.container}>
-      <Text>Device name: {deviceName}</Text>
+      <ThemeProvider>
+        <Button style={styles.button} onPress={handleClick} text="Ok boomer" />
+        <Button
+          style={styles.button}
+          isPrimary
+          onPress={handleClick}
+          text="Ok boomer"
+        />
+        <Button isSecondary onPress={handleClick} text="Ok boomer" />
+      </ThemeProvider>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 16,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    marginBottom: 8,
   },
 });
