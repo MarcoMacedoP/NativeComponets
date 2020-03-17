@@ -19,15 +19,16 @@ type ButtonType = React.FC<
   }
 >;
 
-const Button: ButtonType = ({ onPress, text, ...styleProps }) => {
+const Button: ButtonType = ({ onPress, text, style, ...styleProps }) => {
   return (
-    <Touchable {...styleProps} onPress={onPress}>
+    <Touchable style={style} {...styleProps} onPress={onPress}>
       <Text {...styleProps}> {text}</Text>
     </Touchable>
   );
 };
 
 const Touchable = styled.TouchableOpacity<StylesType>`
+  flex-direction: row;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -37,13 +38,23 @@ const Touchable = styled.TouchableOpacity<StylesType>`
       ? props.theme.primary
       : props.isSecondary
       ? props.theme.secondary
+      : props.isSecondaryDark
+      ? props.theme.secondaryDark
       : 'transparent'};
   height: 40px;
 `;
 
 const Text = styled.Text<StylesType>`
-  color: ${props => (props.isOutline ? 'red' : props.theme.background)};
+  color: ${props =>
+    props.isOutline ||
+    (!props.isPrimary &&
+      !props.isSecondary &&
+      !props.isSecondaryDark &&
+      !props.isSecondaryLigth)
+      ? props.theme.secondary
+      : props.theme.background};
   text-transform: uppercase;
+  align-self: center;
 `;
 
 export default Button as ButtonType;

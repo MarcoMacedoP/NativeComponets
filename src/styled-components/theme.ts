@@ -7,6 +7,7 @@ export type ThemeType = {
   background: string;
   surface: string;
   error: string;
+  black: string;
 };
 
 const defaultTheme: ThemeType = {
@@ -18,5 +19,6 @@ const defaultTheme: ThemeType = {
   background: '#ffffff',
   surface: '#ffffff',
   error: '#EF5350',
+  black: '#000000',
 };
 export default defaultTheme as ThemeType;
