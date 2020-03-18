@@ -8,6 +8,7 @@ export type ThemeType = {
   surface: string;
   error: string;
   black: string;
+  gray: string;
 };
 
 const defaultTheme: ThemeType = {
@@ -20,5 +21,6 @@ const defaultTheme: ThemeType = {
   surface: '#ffffff',
   error: '#EF5350',
   black: '#000000',
+  gray: '#ACA8A8',
 };
 export default defaultTheme as ThemeType;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '../styled-components';
 import { StyleProp } from 'react-native';
 
@@ -19,15 +19,56 @@ type ButtonType = React.FC<
   }
 >;
 
-const Button: ButtonType = ({ onPress, text, style, ...styleProps }) => {
+const Button: ButtonType = ({
+  onPress,
+  text,
+  children,
+  style,
+  ...styleProps
+}) => {
+  const [hasStyles, setHasStyles] = React.useState(false);
+  useEffect(() => {
+    const {
+      isEnabled,
+      isOutline,
+      isPrimary,
+      isSecondary,
+      isSecondaryDark,
+      isSecondaryLigth,
+    } = styleProps;
+    if (
+      isEnabled ||
+      isOutline ||
+      isPrimary ||
+      isSecondary ||
+      isSecondaryDark ||
+      isSecondaryLigth
+    ) {
+      setHasStyles(true);
+    } else {
+      setHasStyles(false);
+    }
+  }, [styleProps]);
   return (
-    <Touchable style={style} {...styleProps} onPress={onPress}>
-      <Text {...styleProps}> {text}</Text>
+    <Touchable
+      hasStyles={hasStyles}
+      style={style}
+      {...styleProps}
+      onPress={onPress}
+    >
+      {children && children}
+      <Text {...styleProps} hasStyles={hasStyles}>
+        {text}
+      </Text>
     </Touchable>
   );
 };
 
-const Touchable = styled.TouchableOpacity<StylesType>`
+type StyledProps = StylesType & {
+  hasStyles: boolean;
+};
+
+const Touchable = styled.TouchableOpacity<StyledProps>`
   flex-direction: row;
   width: 100%;
   align-items: center;
@@ -44,17 +85,12 @@ const Touchable = styled.TouchableOpacity<StylesType>`
   height: 40px;
 `;
 
-const Text = styled.Text<StylesType>`
+const Text = styled.Text<StyledProps>`
   color: ${props =>
-    props.isOutline ||
-    (!props.isPrimary &&
-      !props.isSecondary &&
-      !props.isSecondaryDark &&
-      !props.isSecondaryLigth)
+    props.isOutline || !props.hasStyles
       ? props.theme.secondary
       : props.theme.background};
-  text-transform: uppercase;
+  text-transform: ${p => (!p.hasStyles ? 'none' : 'uppercase')};
   align-self: center;
 `;
-
 export default Button as ButtonType;
