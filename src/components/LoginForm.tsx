@@ -124,4 +124,4 @@ const Link = styled(ButtonBase)`
   flex: 1;
 `;
 
-export default LoginForm;
+export default LoginForm as LoginFormType;
