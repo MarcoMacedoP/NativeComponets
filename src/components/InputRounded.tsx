@@ -28,9 +28,8 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
   const animatedStyles = {
     borderColor: interpolatedColor,
     color: interpolatedColor,
-    borderWidth: animatedValue,
   };
-  const ANIMATION_TIME = 150;
+  const ANIMATION_TIME = 300;
   //handlers
   const { onBlur, onFocus } = props;
 
@@ -39,7 +38,7 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
     Animated.timing(animatedValue, {
       toValue: 2,
       duration: ANIMATION_TIME,
-      easing: Easing.linear,
+      easing: Easing.circle,
     }).start();
     if (onFocus) onFocus(e);
   }
@@ -74,6 +73,7 @@ const Container = styled(Animated.View)`
   width: 100%;
   border-radius: ${p => p.theme.borderRadius}px;
   flex-direction: row;
+  border: 1px;
   align-items: center;
   padding-left: 12px;
 `;
