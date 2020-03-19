@@ -13,11 +13,10 @@ import { ThemeType } from 'src/styled-components/theme';
 
 const AnimatedInput = Animated.createAnimatedComponent(TextInput);
 
-type InputType = React.FC<TextInputProps & { Icon?: React.ReactNode }>;
+type InputType = React.FC<TextInputProps & { hasCenterText?: boolean }>;
 
 const InputRounded: InputType = ({ children, style, ...props }) => {
   //hooks
-  const [isFocused, setFocused] = useState(false);
   const [animatedValue] = useState(new Animated.Value(1));
   const theme: ThemeType = useContext(ThemeContext);
   const interpolatedColor = animatedValue.interpolate({
@@ -34,7 +33,6 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
   const { onBlur, onFocus } = props;
 
   function handleFocus(e: NativeSyntheticEvent<TextInputFocusEventData>) {
-    setFocused(true);
     Animated.timing(animatedValue, {
       toValue: 2,
       duration: ANIMATION_TIME,
@@ -43,7 +41,6 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
     if (onFocus) onFocus(e);
   }
   function handleBlur(e: NativeSyntheticEvent<TextInputFocusEventData>) {
-    setFocused(false);
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: ANIMATION_TIME,
@@ -53,15 +50,17 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
 
   return (
     <Container style={[style, animatedStyles]}>
-      {children && (
+      {children && React.isValidElement(children) && (
         <IconContainer>
-          {React.cloneElement(children, { color: interpolatedColor })}
+          {React.cloneElement(children && children, {
+            color: interpolatedColor,
+          })}
         </IconContainer>
       )}
       <StyledInput
         {...props}
+        maxFontSizeMultiplier="1"
         style={{ color: interpolatedColor }}
-        isFocused={isFocused}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
@@ -71,7 +70,7 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
 
 const Container = styled(Animated.View)`
   width: 100%;
-  border-radius: ${p => p.theme.borderRadius}px;
+  border-radius: ${props => props.theme.borderRadius}px;
   flex-direction: row;
   border: 1px;
   align-items: center;
@@ -81,8 +80,9 @@ const IconContainer = styled.View`
   width: 16px;
   height: 16px;
 `;
-const StyledInput = styled(AnimatedInput)<{ isFocused: boolean }>`
-  color: ${p => p.theme.gray};
+const StyledInput = styled(AnimatedInput)<{ hasCenterText?: boolean }>`
+  text-align: ${props => (props.hasCenterText ? 'center' : 'left')};
+  color: ${props => props.theme.gray};
   width: 100%;
   padding: 8px 0 8px 8px;
   min-height: 36px;

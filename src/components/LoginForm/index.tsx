@@ -1,6 +1,5 @@
 import React from 'react';
-import { FormFooter, BaseForm } from '../BaseForm';
-import { FormContainer } from '../BaseForm/styled-components';
+import { FormFooter, BaseForm, FormContainer } from '../BaseForm';
 //styled
 import styled from '../../styled-components';
 

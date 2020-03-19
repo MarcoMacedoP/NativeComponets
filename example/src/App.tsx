@@ -1,48 +1,11 @@
 import * as React from 'react';
-import {
-  ThemeProvider,
-  Login,
-  InputRounded as InputBase,
-  EmailIcon,
-  LockIcon,
-} from 'react-native-toopago-ui';
-import styled from 'styled-components/native';
+import { ThemeProvider } from 'react-native-toopago-ui';
+import Signup from './components/Signup';
+
 export default function App() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const emptyVoid = () => {
-    console.log('hey');
-  };
   return (
     <ThemeProvider>
-      <Login
-        onLogin={emptyVoid}
-        onFacebookLogin={emptyVoid}
-        onBackupAccount={emptyVoid}
-        onCreateAccount={emptyVoid}
-      >
-        <Input
-          placeholder="Email"
-          autoFocus
-          textContentType="emailAddress"
-          value={email}
-          onChangeText={setEmail}
-        >
-          <EmailIcon />
-        </Input>
-
-        <Input
-          placeholder="Contraseña"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        >
-          <LockIcon />
-        </Input>
-      </Login>
+      <Signup />
     </ThemeProvider>
   );
 }
-const Input = styled(InputBase)`
-  margin-bottom: 16px;
-`;
