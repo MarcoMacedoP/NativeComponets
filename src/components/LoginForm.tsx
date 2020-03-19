@@ -29,7 +29,6 @@ const LoginForm: LoginFormType = props => {
       </Header>
       <Form>
         <ToopagoIcon />
-
         <Input
           placeholder="Email"
           autoFocus
@@ -99,7 +98,8 @@ const Input = styled(InputBase)`
 const ToopagoIcon = styled(ToopagoIconBase)`
   margin: 16px 0;
   width: 100%;
-  flex: 0.5;
+  max-width: 200px;
+  flex: 0.4;
 `;
 const Button = styled(ButtonBase)`
   margin-bottom: 16px;
