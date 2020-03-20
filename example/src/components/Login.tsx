@@ -1,18 +1,21 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   ThemeProvider,
   Login,
   InputRounded as InputBase,
   EmailIcon,
   LockIcon,
+  ConfirmRawModal,
 } from 'react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default function App() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [modalIsShowed, setModalIsShowed] = useState(false);
   const emptyVoid = () => {
     console.log('hey');
+    setModalIsShowed(true);
   };
   return (
     <ThemeProvider>
@@ -41,6 +44,15 @@ export default function App() {
           <LockIcon />
         </Input>
       </Login>
+      <ConfirmRawModal
+        transactionData={{
+          amount: '0.000012',
+          usd: '0.02',
+          currency: 'AGVC',
+        }}
+        isShowed={modalIsShowed}
+        onClose={() => setModalIsShowed(false)}
+      />
     </ThemeProvider>
   );
 }
