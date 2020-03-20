@@ -1,76 +1,46 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from '../styled-components';
 import { StyleProp } from 'react-native';
 
 type StylesType = {
   isPrimary?: boolean;
-  isSecondary?: boolean;
-  isEnabled?: boolean;
-  isSecondaryLigth?: boolean;
-  isSecondaryDark?: boolean;
-  isDanger?: boolean;
 };
 
-type ClipboardType = React.FC<
+type BaseCardType = React.FC<
   StylesType & {
     text?: string;
     onPress: () => void;
     style?: StyleProp<any>;
+    thumbnail?: () => void;
   }
 >;
 
-const Clipboard: ClipboardType = ({
+const BaseCard: BaseCardType = ({
   onPress,
   children,
   text,
   style,
+  thumbnail,
   ...styleProps
 }) => {
-  const [hasStyles, setHasStyles] = React.useState(false);
-  useEffect(() => {
-    const {
-      isEnabled,
-      isPrimary,
-      isSecondary,
-      isSecondaryDark,
-      isSecondaryLigth,
-      isDanger,
-    } = styleProps;
-    if (
-      isEnabled ||
-      isPrimary ||
-      isSecondary ||
-      isSecondaryDark ||
-      isSecondaryLigth ||
-      isDanger
-    ) {
-      setHasStyles(true);
-    } else {
-      setHasStyles(false);
-    }
-  }, [styleProps]);
   return (
-    <Touchable
-      hasStyles={hasStyles}
-      style={style}
-      {...styleProps}
-      onPress={onPress}
-    >
-      <TextBox hasStyles={hasStyles} style={style} {...styleProps}>
-        <Text {...styleProps} hasStyles={hasStyles}>
-          {text}
-        </Text>
+    <Touchable style={style} {...styleProps} onPress={onPress}>
+      {thumbnail && (
+        <IconBox style={style} {...styleProps}>
+          {thumbnail}
+        </IconBox>
+      )}
+      <TextBox style={style} {...styleProps}>
+        <Text {...styleProps}>{text}</Text>
       </TextBox>
-      <IconBox hasStyles={hasStyles} style={style} {...styleProps}>
-        {children && children}
+      <IconBox style={style} {...styleProps}>
+        {children}
       </IconBox>
     </Touchable>
   );
 };
 
-type StyledProps = StylesType & {
-  hasStyles: boolean;
-};
+type StyledProps = StylesType & {};
 
 const Touchable = styled.TouchableOpacity<StyledProps>`
   flex-direction: row;
@@ -92,17 +62,7 @@ const IconBox = styled.View<StyledProps>`
   border-top-end-radius: 5px;
   border-bottom-end-radius: 5px;
   background-color: ${props =>
-    props.isPrimary
-      ? props.theme.primary
-      : props.isSecondary
-      ? props.theme.secondary
-      : props.isSecondaryDark
-      ? props.theme.secondaryDark
-      : props.isSecondaryLigth
-      ? props.theme.secondaryLigth
-      : props.isDanger
-      ? props.theme.error
-      : 'transparent'};
+    props.isPrimary ? props.theme.primary : 'transparent'};
 `;
 const TextBox = styled.View<StyledProps>`
   flex: 4;
@@ -116,7 +76,7 @@ const TextBox = styled.View<StyledProps>`
 `;
 const Text = styled.Text<StyledProps>`
   color: ${props => props.theme.lightGray};
-  font-weight: 200;
+  font-weight: 200px;
   font-size: 14px;
 `;
-export default Clipboard as ClipboardType;
+export default BaseCard as BaseCardType;

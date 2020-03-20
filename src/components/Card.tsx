@@ -71,7 +71,6 @@ const Card: CardType = ({
       setHasStyles(false);
     }
   }, [styleProps]);
-  console.log(content);
   return (
     <Touchable
       hasStyles={hasStyles}
@@ -83,23 +82,24 @@ const Card: CardType = ({
         {children && children}
       </IconBox>
       <TextContent hasStyles={hasStyles} style={style} {...styleProps}>
-        {content.map(({ title, desc }, index) => (
-          <TextBox
-            key={index}
-            hasStyles={hasStyles}
-            style={style}
-            {...styleProps}
-          >
-            <Text {...styleProps} hasStyles={hasStyles}>
-              {title}
-            </Text>
-            {desc && (
-              <TextSecondary {...styleProps} hasStyles={hasStyles}>
-                {desc}
-              </TextSecondary>
-            )}
-          </TextBox>
-        ))}
+        {content &&
+          content.map(({ title, desc }, index) => (
+            <TextBox
+              key={index}
+              hasStyles={hasStyles}
+              style={style}
+              {...styleProps}
+            >
+              <Text {...styleProps} hasStyles={hasStyles}>
+                {title}
+              </Text>
+              {desc && (
+                <TextSecondary {...styleProps} hasStyles={hasStyles}>
+                  {desc}
+                </TextSecondary>
+              )}
+            </TextBox>
+          ))}
       </TextContent>
     </Touchable>
   );
@@ -163,7 +163,7 @@ const TextBox = styled.View<StyledProps>`
 `;
 const Text = styled.Text<StyledProps>`
   color: ${props => props.theme.lightGray};
-  font-weight: 200;
+  font-weight: 200px;
   font-size: 14px;
 `;
 const TextSecondary = styled.Text<StyledProps>`
@@ -179,7 +179,7 @@ const TextSecondary = styled.Text<StyledProps>`
       : props.isDanger
       ? props.theme.error
       : 'transparent'};
-  font-weight: 200;
+  font-weight: 200px;
   font-size: 16px;
   margin-top: 8px;
   text-transform: ${p => (!p.hasStyles ? 'none' : 'uppercase')};
