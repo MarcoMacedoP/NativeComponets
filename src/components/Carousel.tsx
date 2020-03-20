@@ -1,5 +1,4 @@
-// ts-nochek
-/* eslint-disable */
+/* ts-nochek */
 import React, { Component, ReactNode } from 'react';
 import {
   Animated,
@@ -54,6 +53,7 @@ class Carousel extends Component<Props> {
 
   constructor(props: Props) {
     super(props);
+
     const { itemWidth, containerWidth, initialIndex } = this.props;
     this.scrollToIndex = this.scrollToIndex.bind(this);
     this.itemAnimatedStyles = this.itemAnimatedStyles.bind(this);
@@ -232,7 +232,7 @@ class Carousel extends Component<Props> {
         decelerationRate={0}
         automaticallyAdjustContentInsets={false}
         keyExtractor={keyExtractor}
-        ref={ref => (this._scrollView = ref)}
+        ref={(ref: any) => (this._scrollView = ref)}
         renderItem={this.renderItemContainer}
         style={[styles.container, { width: containerWidth }, style]}
         showsHorizontalScrollIndicator={false}
@@ -258,7 +258,7 @@ Carousel.defaultProps = {
   pagingEnable: true,
   minScrollDistance: 20,
   itemContainerStyle: {},
-  keyExtractor: (item: any, index: number) => index.toString(),
+  keyExtractor: (_item: any, index: number) => index.toString(),
   renderItem: () => {},
   onScrollEnd: () => {},
   onScrollBeginDrag: () => {},
