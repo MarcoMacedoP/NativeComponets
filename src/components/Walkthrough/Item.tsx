@@ -18,6 +18,7 @@ const WalkthroughItem: WalkthroughItemType = props => {
 };
 const Container = styled.View`
   flex: 1;
+  min-width: 100%;
   background-color: ${props => props.theme.background};
 `;
 const Header = styled.View`

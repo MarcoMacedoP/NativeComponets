@@ -9,7 +9,7 @@ import InputRounded from './components/InputRounded';
 //utils
 import defaultTheme from './styled-components/theme';
 export * from './components/Icons';
-export * from './components/Walkthrough';
+import Walkthrough from './components/Walkthrough';
 
 export {
   Button,
@@ -18,5 +18,6 @@ export {
   Login,
   InputRounded,
   Signup,
+  Walkthrough,
   DiscountLabel,
 };
