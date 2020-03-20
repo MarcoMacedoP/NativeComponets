@@ -39,7 +39,7 @@ const Form = styled.View`
   flex: 5;
   align-items: center;
   justify-content: flex-start;
-  padding: 2.5% 2.5% 0;
+  padding: 16px 16px 0;
 `;
 const FacebookIcon = styled.Image`
   width: 16px;
@@ -55,5 +55,6 @@ const ToopagoIcon = styled(ToopagoIconBase)`
   margin: 16px 0;
   width: 100%;
   flex: 0.5;
+  max-width: 300px;
 `;
 export default BaseForm;
