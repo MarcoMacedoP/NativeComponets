@@ -5,7 +5,7 @@ import {
   InputRounded as InputBase,
   EmailIcon,
   LockIcon,
-  ConfirmRawModal,
+  FullscreenModal,
 } from 'react-native-toopago-ui';
 import styled from 'styled-components/native';
 
@@ -44,7 +44,7 @@ export default function App() {
           <LockIcon />
         </Input>
       </Login>
-      <ConfirmRawModal
+      <FullscreenModal
         transactionData={{
           amount: '0.000012',
           usd: '0.02',

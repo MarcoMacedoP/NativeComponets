@@ -53,7 +53,7 @@ const Button = styled(ButtonBase)`
 `;
 const ToopagoIcon = styled(ToopagoIconBase)`
   margin: 16px 0;
-  width: 100%;
+  width: 60%;
   flex: 0.5;
   max-width: 300px;
 `;
