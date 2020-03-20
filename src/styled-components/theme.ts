@@ -22,5 +22,6 @@ const defaultTheme: ThemeType = {
   error: '#EF5350',
   black: '#000000',
   gray: '#ACA8A8',
+  lightGray: '#B2B2B2',
 };
 export default defaultTheme as ThemeType;

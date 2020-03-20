@@ -3,6 +3,7 @@ import ToopagoIconBase from './Icons/ToopagoIcon';
 //styled
 import styled from '../styled-components';
 import ButtonBase from './Button';
+import Clipboard from './Clipboard';
 import InputBase from './InputRounded';
 import EmailIcon from './Icons/Email';
 import LockIcon from './Icons/Lock';
@@ -48,10 +49,17 @@ const LoginForm: LoginFormType = props => {
           <LockIcon />
         </Input>
 
-        <Button text="Log in" isPrimary onPress={props.onLogin} />
+        {/* <Button text="Log in" isPrimary onPress={props.onLogin} />
         <Button text="Log in" isSecondaryDark onPress={props.onLogin}>
           <FacebookIcon source={facebookIcon} />
-        </Button>
+        </Button> */}
+        <Clipboard
+          text="3BJGQDbeA7frp8GY4gL7H2YpTefExbbbKL"
+          isPrimary
+          onPress={props.onLogin}
+        >
+          <FacebookIcon source={facebookIcon} />
+        </Clipboard>
       </Form>
       <Footer>
         <Link text="Crea tu cuenta" onPress={props.onCreateAccount} />
@@ -108,7 +116,6 @@ const FacebookIcon = styled.Image`
   width: 16px;
   height: 100%;
   resize-mode: contain;
-  margin-right: 8px;
 `;
 
 const Footer = styled.View`
