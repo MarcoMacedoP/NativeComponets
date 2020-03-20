@@ -59,7 +59,7 @@ const InputRounded: InputType = ({ children, style, ...props }) => {
       )}
       <StyledInput
         {...props}
-        maxFontSizeMultiplier="1"
+        maxFontSizeMultiplier={0}
         style={{ color: interpolatedColor }}
         onFocus={handleFocus}
         onBlur={handleBlur}
