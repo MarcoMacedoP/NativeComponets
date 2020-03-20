@@ -11,7 +11,6 @@ type WalkthroughType = React.FC<{
 }>;
 
 const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
-  const carrouselReference = React.useRef();
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const { width } = Dimensions.get('window');
@@ -22,12 +21,10 @@ const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
     <Container>
       <StyledCarrousel
         onIndexChange={setCurrentIndex}
-        intialIndex={2}
         containerWidth={width}
         itemWidth={width}
         minScrollDistance={0}
         renderItem={renderItem}
-        ref={carrouselReference}
         data={data}
       />
       <ControlsContainer>

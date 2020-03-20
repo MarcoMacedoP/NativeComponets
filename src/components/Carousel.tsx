@@ -1,4 +1,5 @@
 // ts-nochek
+/* eslint-disable */
 import React, { Component, ReactNode } from 'react';
 import {
   Animated,
@@ -69,7 +70,7 @@ class Carousel extends Component<Props> {
       [{ nativeEvent: { contentOffset: { x: this.xOffset } } }],
       {
         useNativeDriver: true,
-        listener: event => {
+        listener: (event: any) => {
           this.scrollX = event.nativeEvent.contentOffset.x;
         },
       }
