@@ -9,6 +9,7 @@ export type ThemeType = {
   error: string;
   black: string;
   gray: string;
+  grayLigth: string;
 };
 
 const defaultTheme: ThemeType = {
@@ -22,5 +23,6 @@ const defaultTheme: ThemeType = {
   error: '#EF5350',
   black: '#000000',
   gray: '#ACA8A8',
+  grayLigth: '#F0F2F9',
 };
 export default defaultTheme as ThemeType;

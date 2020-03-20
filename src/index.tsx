@@ -9,6 +9,7 @@ import InputRounded from './components/InputRounded';
 //utils
 import defaultTheme from './styled-components/theme';
 export * from './components/Icons';
+export * from './components/Walkthrough';
 
 export {
   Button,

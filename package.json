@@ -127,6 +127,7 @@
     ]
   },
   "dependencies": {
+    "react-native-anchor-carousel": "^3.1.2",
     "react-native-svg": "^12.0.3",
     "styled-components": "^5.0.1"
   }
