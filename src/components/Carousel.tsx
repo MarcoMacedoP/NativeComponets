@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+// ts-nochek
+import React, { Component, ReactNode } from 'react';
 import {
   Animated,
   StyleSheet,
   Dimensions,
-  ViewPropTypes,
   FlatList,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
-//import PropTypes from 'prop-types';
 
 const { width } = Dimensions.get('window');
 
@@ -17,40 +18,53 @@ const styles = StyleSheet.create({
 });
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
-
-class Carousel extends Component<{}> {
+type Props = {
+  itemWidth: number;
+  containerWidth: number;
+  initialIndex?: number;
+  onIndexChange?: (index: number) => void;
+  onScrollEnd?: (data: Array<any>, index: number) => void;
+  data: Array<any>;
+  separatorWidth?: number;
+  inActiveScale?: number;
+  inActiveOpacity?: number;
+  onScrollBeginDrag?: () => void;
+  minScrollDistance?: number;
+  onScrollEndDrag?: () => void;
+  renderItem: ({ item, index }: { item: any; index: number }) => ReactNode;
+  inverted?: boolean;
+  itemContainerStyle?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
+  style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
+  bounces?: Animated.WithAnimatedValue<boolean | undefined>;
+  keyExtractor?: Animated.WithAnimatedValue<
+    ((item: unknown, index: number) => string) | undefined
+  >;
+  pagingEnable?: boolean;
+};
+class Carousel extends Component<Props> {
   currentIndex: any;
   _scrollView: any;
   halfContainerWidth: any;
   halfItemWidth: number;
+  scrollXBegin: number;
+  handleOnScroll: (...args: any[]) => void;
+  xOffset: Animated.Value;
+  scrollX: any;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
+    const { itemWidth, containerWidth, initialIndex } = this.props;
     this.scrollToIndex = this.scrollToIndex.bind(this);
     this.itemAnimatedStyles = this.itemAnimatedStyles.bind(this);
     this.renderItemContainer = this.renderItemContainer.bind(this);
     this.handleOnScrollBeginDrag = this.handleOnScrollBeginDrag.bind(this);
     this.handleOnScrollEndDrag = this.handleOnScrollEndDrag.bind(this);
-    this.getItemLayout = this.getItemLayout.bind(this);
-    this.initialize();
-    this.setScrollHandler();
-  }
 
-  initialize() {
-    const {
-      itemWidth,
-
-      containerWidth,
-      initialIndex,
-    } = this.props;
     this.currentIndex = initialIndex;
     this.scrollXBegin = 0;
     this.xOffset = new Animated.Value(0);
     this.halfContainerWidth = containerWidth / 2;
     this.halfItemWidth = itemWidth / 2;
-  }
-
-  setScrollHandler() {
     this.handleOnScroll = Animated.event(
       [{ nativeEvent: { contentOffset: { x: this.xOffset } } }],
       {
@@ -62,20 +76,19 @@ class Carousel extends Component<{}> {
     );
   }
 
-  scrollToIndex(index) {
+  scrollToIndex(index: number) {
     const {
       onIndexChange,
       onScrollEnd,
       data,
       itemWidth,
-      separatorWidth,
+      separatorWidth = 20,
     } = this.props;
     if (onIndexChange) {
-      console.log(onIndexChange);
       onIndexChange(index);
     }
     if (index < 0 || index >= data.length) return;
-    onScrollEnd(data[index], index);
+    onScrollEnd && onScrollEnd(data[index], index);
     this.currentIndex = index;
     setTimeout(() => {
       this._scrollView.getNode().scrollToOffset({
@@ -94,7 +107,7 @@ class Carousel extends Component<{}> {
   }
 
   handleOnScrollEndDrag() {
-    const { minScrollDistance, onScrollEndDrag } = this.props;
+    const { minScrollDistance = 0, onScrollEndDrag } = this.props;
     onScrollEndDrag && onScrollEndDrag();
     if (this.scrollX < 0) {
       return;
@@ -110,13 +123,13 @@ class Carousel extends Component<{}> {
       : this.scrollToIndex(this.currentIndex + 1);
   }
 
-  itemAnimatedStyles(index) {
+  itemAnimatedStyles(index: number) {
     const {
       data,
-      inActiveScale,
-      inActiveOpacity,
+      inActiveScale = 0.8,
+      inActiveOpacity = 0.8,
       itemWidth,
-      separatorWidth,
+      separatorWidth = 0,
       containerWidth,
     } = this.props;
     const animatedOffset =
@@ -170,7 +183,7 @@ class Carousel extends Component<{}> {
     return { ...animatedOpacity, ...animatedScale };
   }
 
-  renderItemContainer({ item, index }) {
+  renderItemContainer({ item, index }: { item: any; index: number }) {
     const {
       data,
       renderItem,
@@ -198,24 +211,12 @@ class Carousel extends Component<{}> {
       </Animated.View>
     );
   }
-  getItemLayout(data, index) {
-    const { itemWidth, separatorWidth } = this.props;
-    return {
-      offset:
-        index * (itemWidth + separatorWidth) +
-        this.halfItemWidth -
-        this.halfContainerWidth,
-      length: itemWidth,
-      index,
-    };
-  }
 
   render() {
     const {
       data,
       bounces,
       style,
-      itemWidth,
       containerWidth,
       initialIndex,
       keyExtractor,
@@ -238,36 +239,10 @@ class Carousel extends Component<{}> {
         onScrollBeginDrag={this.handleOnScrollBeginDrag}
         onScroll={this.handleOnScroll}
         onScrollEndDrag={this.handleOnScrollEndDrag}
-        getItemLayout={this.getItemLayout}
-
-        //scrollEnabled//snapToInterval={itemWidth}
       />
     );
   }
 }
-
-// Carousel.propTypes = {
-//   style: ViewPropTypes.style,
-//   bounces: PropTypes.bool,
-//   itemWidth: PropTypes.number,
-//   separatorWidth: PropTypes.number,
-//   containerWidth: PropTypes.number,
-//   itemContainerStyle: ViewPropTypes.style,
-//   inActiveScale: PropTypes.number,
-//   inActiveOpacity: PropTypes.number,
-//   keyExtractor: PropTypes.func,
-//   renderItem: PropTypes.func,
-//   onScrollEnd: PropTypes.func,
-//   pagingEnable: PropTypes.bool,
-//   initialIndex: PropTypes.number,
-//   minScrollDistance: PropTypes.number,
-//   onScrollBeginDrag: PropTypes.func,
-//   onScrollEndDrag: PropTypes.func,
-//   data: PropTypes.arrayOf(PropTypes.object),
-//   onIndexChange: PropTypes.func,
-//   //itemHeight: PropTypes.number,
-//   //containerHeight: PropTypes.number,
-// };
 
 Carousel.defaultProps = {
   inActiveScale: 0.8,
@@ -282,12 +257,10 @@ Carousel.defaultProps = {
   pagingEnable: true,
   minScrollDistance: 20,
   itemContainerStyle: {},
-  keyExtractor: (item, index) => index.toString(),
+  keyExtractor: (item: any, index: number) => index.toString(),
   renderItem: () => {},
   onScrollEnd: () => {},
   onScrollBeginDrag: () => {},
   onScrollEndDrag: () => {},
-  //containerHeight: 200
-  //itemHeight: 0.2 * height - 20,
 };
 export default Carousel;
