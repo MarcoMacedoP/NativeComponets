@@ -1,3 +1,11 @@
 import { StyleProp, ViewStyle } from 'react-native';
-
-export type IconType = React.FC<{ style?: StyleProp<ViewStyle>; color?: any }>;
+type IconProps = {
+  style?: StyleProp<ViewStyle>;
+  color?: any;
+};
+export type IconType = React.FC<IconProps>;
+export type NotificationsIconType = React.FC<
+  IconProps & {
+    numberOfNotifications: number;
+  }
+>;

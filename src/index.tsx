@@ -5,6 +5,8 @@ import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
+import Navbar from './components/Navbar';
+
 // Modals
 import ConfirmRawModal from './components/Modals/ConfirmRawModal';
 import FullscreenModal from './components/Modals/FullscreenModal';
@@ -17,6 +19,7 @@ import Walkthrough from './components/Walkthrough';
 
 export {
   Button,
+  Navbar,
   defaultTheme,
   ThemeProvider,
   Login,
