@@ -5,6 +5,7 @@ import styled from '../../styled-components';
 import { WalkthroughItemData } from './types';
 import { Dimensions } from 'react-native';
 import Button from '../Button';
+
 type WalkthroughType = React.FC<{
   onFinish: () => void;
   data: Array<WalkthroughItemData>;
