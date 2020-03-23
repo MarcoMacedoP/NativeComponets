@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import styled from '../../styled-components';
-import { NavbarItemType } from './types';
+import { DrawerItemType } from './types';
 import { ThemeType } from 'src/styled-components/theme';
 import { ThemeContext } from 'styled-components';
 
-const NavbarItem: NavbarItemType = props => {
+const NavbarItem: DrawerItemType = props => {
   const theme: ThemeType = useContext(ThemeContext);
   return (
     <Container>
       <ChildrenContainer>
-        {React.cloneElement(props.children, {
-          color: theme.primary,
-        })}
+        {props.children &&
+          React.cloneElement(props.children, {
+            color: theme.primary,
+          })}
       </ChildrenContainer>
       <Text>{props.title || 'Titulo de la ruta'}</Text>
     </Container>
@@ -25,6 +26,7 @@ const Container = styled.TouchableOpacity`
   justify-content: center;
   max-height: 50px;
   flex-direction: row;
+  margin: 8px 0;
 `;
 
 const Text = styled.Text`
@@ -38,4 +40,4 @@ const ChildrenContainer = styled.View`
   max-width: 20px;
   align-items: center;
 `;
-export default NavbarItem as NavbarItemType;
+export default NavbarItem as DrawerItemType;

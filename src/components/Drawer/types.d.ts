@@ -1,20 +1,29 @@
 import { ImageSourcePropType, StyleProp, ViewStyle } from 'react-native';
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
-export type NavbarType = React.FC<{
+export type DrawerNavbarType = React.FC<{
   title: string;
-  notifications: string;
+  onMenuPress: () => void;
+  onNotificationPress: () => void;
+  notifications: number;
 }>;
 
-export type MenuIconType = React.FC<{
+export type DrawerMenuIconType = React.FC<{
   style?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 }>;
 
-export type NavbarItemType = React.FC<{
+export type DrawerItemType = React.FC<{
   title: string;
   children: React.ReactElement<any>;
 }>;
 
-export type NavbarHeaderType = React.FC<{
+type DrawerHeaderProps = {
   userImageSource: ImageSourcePropType;
   userName: string;
-}>;
+};
+export type DrawerHeaderType = React.FC<DrawerHeaderProps>;
+
+export type CustomDrawerContentType = React.FC<
+  DrawerContentComponentProps & DrawerHeaderProps
+>;

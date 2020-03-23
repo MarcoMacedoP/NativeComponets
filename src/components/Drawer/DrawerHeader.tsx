@@ -1,15 +1,17 @@
 import React from 'react';
-import { NavbarHeaderType } from './types';
+import { DrawerHeaderType } from './types';
 import styled from '../../styled-components';
 import { CirlcesIcon } from '../Icons';
 
-const NavbarHeader: NavbarHeaderType = props => (
-  <Container>
-    <Image source={props.userImageSource} />
-    <Username>{props.userName}</Username>
-    <StyledCircles />
-  </Container>
-);
+const NavbarHeader: DrawerHeaderType = props => {
+  return (
+    <Container>
+      <Image source={props.userImageSource} />
+      <Username>{props.userName}</Username>
+      <StyledCircles />
+    </Container>
+  );
+};
 
 const Container = styled.TouchableOpacity`
   background-color: ${props => props.theme.primary};
@@ -23,7 +25,6 @@ const Image = styled.Image`
   max-height: 40px;
   max-width: 40px;
   border-radius: 700px;
-  flex: 1;
 `;
 const Username = styled.Text`
   font-size: 16px;
@@ -37,4 +38,4 @@ const StyledCircles = styled(CirlcesIcon)`
   right: 0;
 `;
 
-export default NavbarHeader as NavbarHeaderType;
+export default NavbarHeader as DrawerHeaderType;

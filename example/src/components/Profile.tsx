@@ -4,6 +4,7 @@ import { Text, View, Dimensions } from 'react-native';
 import { DrawerNavbar } from 'react-native-toopago-ui';
 
 export default ({ navigation }) => {
+  const toggleDrawer = () => navigation.toggleDrawer();
   return (
     <View
       style={{
@@ -15,7 +16,8 @@ export default ({ navigation }) => {
       <DrawerNavbar
         title="Hola fernanda"
         notifications={2}
-        onMenuPress={() => navigation.toggleDrawer()}
+        onMenuPress={toggleDrawer}
+        onNotificationPress={toggleDrawer}
       />
 
       <Text>Profile screen</Text>

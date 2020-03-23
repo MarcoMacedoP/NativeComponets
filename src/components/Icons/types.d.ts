@@ -7,5 +7,6 @@ export type IconType = React.FC<IconProps>;
 export type NotificationsIconType = React.FC<
   IconProps & {
     numberOfNotifications: number;
+    onPress: () => void;
   }
 >;
