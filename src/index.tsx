@@ -6,9 +6,9 @@ import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
 //drawer
-import Navbar from './components/Navbar';
-import NavbarItem from './components/Navbar/NavbarItem';
-import NavbarHeader from './components/Navbar/NavbarHeader';
+import DrawerNavbar from './components/Drawer';
+import DrawerItem from './components/Drawer/DrawerItem';
+import DrawerHeader from './components/Drawer/DrawerHeader';
 
 // Modals
 import ConfirmRawModal from './components/Modals/ConfirmRawModal';
@@ -22,9 +22,9 @@ import Walkthrough from './components/Walkthrough';
 
 export {
   Button,
-  Navbar,
-  NavbarItem,
-  NavbarHeader,
+  DrawerNavbar,
+  DrawerItem,
+  DrawerHeader,
   defaultTheme,
   ThemeProvider,
   Login,
