@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ThemeProvider, Navbar } from 'react-native-toopago-ui';
+import {
+  ThemeProvider,
+  Navbar,
+  NavbarItem,
+  EmailIcon,
+} from 'react-native-toopago-ui';
 import Payments from './components/Payments';
 import styled from 'styled-components/native';
 export default function App() {
@@ -7,6 +12,9 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <Navbar />
+        <NavbarItem>
+          <EmailIcon />
+        </NavbarItem>
         <Payments />
       </Container>
     </ThemeProvider>
