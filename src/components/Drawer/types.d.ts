@@ -16,6 +16,7 @@ export type DrawerMenuIconType = React.FC<{
 export type DrawerItemType = React.FC<{
   title: string;
   children: React.ReactElement<any>;
+  onPress: () => void;
 }>;
 
 type DrawerHeaderProps = {

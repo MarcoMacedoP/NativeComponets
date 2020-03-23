@@ -20,6 +20,7 @@ const Container = styled.TouchableOpacity`
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  margin-bottom: 16px;
 `;
 const Image = styled.Image`
   max-height: 40px;

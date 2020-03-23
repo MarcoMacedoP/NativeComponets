@@ -31,14 +31,14 @@ export default function App() {
               name="Perfil"
               component={ProfileScreen}
               options={{
-                drawerIcon: () => <EmailIcon />,
+                drawerIcon: EmailIcon,
               }}
             />
             <Drawer.Screen
               name="Payments"
               component={Payments}
               options={{
-                drawerIcon: () => <LockIcon />,
+                drawerIcon: LockIcon,
               }}
             />
           </Drawer.Navigator>

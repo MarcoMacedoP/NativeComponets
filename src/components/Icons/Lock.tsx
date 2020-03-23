@@ -9,7 +9,7 @@ const LockIcon: IconType = ({ style, color }) => {
   const defaultColor = '#aca8a8';
   return (
     <IconContainer style={style}>
-      <Svg width="100%" height="100%" viewBox="0 0 10.673 13.03">
+      <Svg width="16" height="16" viewBox="0 0 10.673 13.03">
         <G
           fill={color || defaultColor}
           stroke={color || defaultColor}
