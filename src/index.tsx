@@ -5,8 +5,10 @@ import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
+//drawer
 import Navbar from './components/Navbar';
 import NavbarItem from './components/Navbar/NavbarItem';
+import NavbarHeader from './components/Navbar/NavbarHeader';
 
 // Modals
 import ConfirmRawModal from './components/Modals/ConfirmRawModal';
@@ -22,6 +24,7 @@ export {
   Button,
   Navbar,
   NavbarItem,
+  NavbarHeader,
   defaultTheme,
   ThemeProvider,
   Login,

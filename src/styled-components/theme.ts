@@ -14,7 +14,7 @@ export type ThemeType = {
 
 const defaultTheme: ThemeType = {
   borderRadius: 18,
-  primary: '#FF896E',
+  primary: '#ef7d54',
   secondary: '#7E9FE2',
   secondaryLigth: '#65CEDC',
   secondaryDark: '#4267B2',

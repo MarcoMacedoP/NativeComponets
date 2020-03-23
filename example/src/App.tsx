@@ -3,6 +3,7 @@ import {
   ThemeProvider,
   Navbar,
   NavbarItem,
+  NavbarHeader,
   EmailIcon,
 } from 'react-native-toopago-ui';
 import Payments from './components/Payments';
@@ -12,6 +13,10 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <Navbar />
+        <NavbarHeader
+          userName="Fernanda Lopez"
+          userImageSource={require('./assets/profile-image.png')}
+        />
         <NavbarItem>
           <EmailIcon />
         </NavbarItem>
