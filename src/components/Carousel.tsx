@@ -1,4 +1,3 @@
-/* ts-nochek */
 import React, { Component, ReactNode } from 'react';
 import {
   Animated,
@@ -63,6 +62,8 @@ const defaultProps: Props = {
   onScrollEndDrag: () => {},
 };
 class Carousel extends Component<Props> {
+  static defaultProps: Props;
+
   currentIndex: any;
   _scrollView: any;
   halfContainerWidth: any;
@@ -268,4 +269,23 @@ class Carousel extends Component<Props> {
   }
 }
 
+Carousel.defaultProps = {
+  inActiveScale: 0.8,
+  inActiveOpacity: 0.8,
+  separatorWidth: 0,
+  containerWidth: width,
+  itemWidth: 0.9 * width,
+  bounces: true,
+  data: [],
+  style: {},
+  initialIndex: 0,
+  pagingEnable: true,
+  minScrollDistance: 20,
+  itemContainerStyle: {},
+  keyExtractor: (_item: any, index: number) => index.toString(),
+  renderItem: null,
+  onScrollEnd: () => {},
+  onScrollBeginDrag: () => {},
+  onScrollEndDrag: () => {},
+};
 export default Carousel;
