@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import styled from '../../styled-components';
-import { DrawerItemType } from './types';
 import { ThemeType } from 'src/styled-components/theme';
 import { ThemeContext } from 'styled-components';
 
+type DrawerItemType = React.FC<{
+  title: string;
+  children: React.ReactElement<any>;
+  onPress: () => void;
+}>;
 const NavbarItem: DrawerItemType = props => {
   const theme: ThemeType = useContext(ThemeContext);
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconType } from './types';
+import { IconType } from '.';
 import { Svg, G, Path } from 'react-native-svg';
 
 const Circles: IconType = ({ style }) => (

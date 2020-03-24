@@ -2,9 +2,14 @@ import Item from './Item';
 import React from 'react';
 import Carrousel from '../Carousel';
 import styled from '../../styled-components';
-import { WalkthroughItemData } from './types';
 import { Dimensions } from 'react-native';
 import Button from '../Button';
+
+export type WalkthroughItemData = {
+  image: any;
+  title: string;
+  desc: string;
+};
 
 type WalkthroughType = React.FC<{
   onFinish: () => void;

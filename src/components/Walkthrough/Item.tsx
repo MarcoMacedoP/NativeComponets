@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from '../../styled-components';
 
-import { WalkthroughItemType } from './types';
+import { WalkthroughItemData } from './index';
+type WalkthroughItemType = React.FC<WalkthroughItemData>;
 
 const WalkthroughItem: WalkthroughItemType = props => {
   return (

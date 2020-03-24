@@ -1,7 +1,11 @@
 import React from 'react';
 import { Svg, G, Path } from 'react-native-svg';
-import { DrawerMenuIconType } from './types';
+import { StyleProp, ViewStyle } from 'react-native';
 
+type DrawerMenuIconType = React.FC<{
+  style?: StyleProp<ViewStyle>;
+  onPress?: () => void;
+}>;
 export const MenuIcon: DrawerMenuIconType = props => (
   <Svg
     id="menu"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Svg, Defs, Stop, LinearGradient, G, Path } from 'react-native-svg';
 import { YellowBox } from 'react-native';
-import { IconType } from './types';
+import { IconType } from '.';
 import IconContainer from './Container';
 
 const Icon: IconType = props => {

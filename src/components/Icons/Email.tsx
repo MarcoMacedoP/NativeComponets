@@ -1,6 +1,6 @@
 import React from 'react';
 import { Svg, G as GBase, Path } from 'react-native-svg';
-import { IconType } from './types';
+import { IconType } from '.';
 import IconContainer from './Container';
 import { Animated } from 'react-native';
 

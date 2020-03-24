@@ -1,9 +1,15 @@
 import React from 'react';
 import styled from '../../styled-components';
-import { DrawerNavbarType } from './types';
 import { SafeAreaView, StatusBar } from 'react-native';
 import NotificationIcon from '../Icons/Notifications';
 import { MenuIcon } from './DrawerMenu';
+
+type DrawerNavbarType = React.FC<{
+  title: string;
+  onMenuPress: () => void;
+  onNotificationPress: () => void;
+  notifications: number;
+}>;
 const DrawerNavbar: DrawerNavbarType = props => {
   return (
     <SafeAreaView>

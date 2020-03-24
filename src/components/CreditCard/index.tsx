@@ -1,9 +1,14 @@
 import React from 'react';
-import { CreditCardType } from './types';
 import styled from '../../styled-components';
 import CheckedBox from '../CheckedBox';
 import Dots from '../Icons/Dots';
 
+type CreditCardType = React.FC<{
+  card: 'visa' | 'mastercard';
+  digits: number | string;
+  onChecked: () => void;
+  isChecked: boolean;
+}>;
 const CreditCard: CreditCardType = props => {
   const image =
     props.card === 'visa'

@@ -1,7 +1,13 @@
 import React from 'react';
-import { DrawerHeaderType } from './types';
 import styled from '../../styled-components';
 import { CirlcesIcon } from '../Icons';
+import { ImageSourcePropType } from 'react-native';
+
+export type DrawerHeaderProps = {
+  userImageSource: ImageSourcePropType;
+  userName: string;
+};
+type DrawerHeaderType = React.FC<DrawerHeaderProps>;
 
 const NavbarHeader: DrawerHeaderType = props => {
   return (

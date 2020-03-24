@@ -1,7 +1,7 @@
 import React from 'react';
 import { Svg, G as BaseG, Path } from 'react-native-svg';
 import { Animated } from 'react-native';
-import { IconType } from './types';
+import { IconType } from '.';
 import IconContainer from './Container';
 const G = Animated.createAnimatedComponent(BaseG);
 

@@ -1,7 +1,14 @@
 import React from 'react';
 import { Svg, G, Path, Circle, Text, TSpan } from 'react-native-svg';
-import { NotificationsIconType } from './types';
 import { TouchableOpacity } from 'react-native';
+import { IconProps } from '.';
+
+type NotificationsIconType = React.FC<
+  IconProps & {
+    numberOfNotifications: number;
+    onPress: () => void;
+  }
+>;
 const Notifications: NotificationsIconType = ({
   style,
   numberOfNotifications = 1,
