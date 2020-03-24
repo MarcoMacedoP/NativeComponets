@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { DrawerNavbar } from 'react-native-toopago-ui';
 
-export default ({ navigation }) => {
+export default ({ navigation }: { navigation: any }) => {
   const toggleDrawer = () => navigation.toggleDrawer();
   return (
     <View

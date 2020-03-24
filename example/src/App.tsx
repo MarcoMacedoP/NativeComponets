@@ -1,5 +1,4 @@
 import * as React from 'react';
-<<<<<<< HEAD
 import 'react-native-gesture-handler';
 import {
   ThemeProvider,
@@ -13,17 +12,10 @@ import Payments from './components/Payments';
 import styled from 'styled-components/native';
 import ProfileScreen from './components/Profile';
 const Drawer = createDrawerNavigator();
-=======
-import { ThemeProvider } from 'react-native-toopago-ui';
-
-import Walkthrough from './components/Walkthrough';
-import styled from 'styled-components/native';
->>>>>>> 025fe0532c34343b6510c39dcc406181c69454eb
 
 export default function App() {
   return (
     <ThemeProvider>
-<<<<<<< HEAD
       <NavigationContainer>
         <Container>
           <Drawer.Navigator
@@ -52,13 +44,6 @@ export default function App() {
           </Drawer.Navigator>
         </Container>
       </NavigationContainer>
-=======
-
-      <Container>
-        <Walkthrough />
-      </Container>
-
->>>>>>> 025fe0532c34343b6510c39dcc406181c69454eb
     </ThemeProvider>
   );
 }

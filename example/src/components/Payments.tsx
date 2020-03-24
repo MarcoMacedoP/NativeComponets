@@ -3,11 +3,27 @@ import { CreditCard } from 'react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default () => {
+  const onChecked = () => console.log('hello there');
   return (
     <CardsContainer>
-      <CreditCard card="visa" digits={123132112} isChecked={false} />
-      <CreditCard card="mastercard" digits={123132112} isChecked={true} />
-      <CreditCard card="visa" digits={123132112} isChecked={false} />
+      <CreditCard
+        card="visa"
+        digits={123132112}
+        isChecked={false}
+        onChecked={onChecked}
+      />
+      <CreditCard
+        card="mastercard"
+        digits={123132112}
+        isChecked={true}
+        onChecked={onChecked}
+      />
+      <CreditCard
+        card="visa"
+        digits={123132112}
+        isChecked={false}
+        onChecked={onChecked}
+      />
     </CardsContainer>
   );
 };

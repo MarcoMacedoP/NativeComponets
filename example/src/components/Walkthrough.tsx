@@ -22,4 +22,6 @@ const data = [
   },
 ];
 
-export default () => <Walkthrough data={data} />;
+export default () => (
+  <Walkthrough data={data} onFinish={() => console.log('hello')} />
+);
