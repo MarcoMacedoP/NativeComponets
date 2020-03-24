@@ -1,5 +1,5 @@
 import React from 'react';
-import { Walkthrough } from 'react-native-toopago-ui';
+import { Walkthrough } from '@lomelidev/react-native-toopago-ui';
 const walkthroughImage = require('../assets/walkthrough-one.png');
 const data = [
   {

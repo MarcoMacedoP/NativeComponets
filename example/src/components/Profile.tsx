@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
-import { DrawerNavbar } from 'react-native-toopago-ui';
+import { DrawerNavbar } from '@lomelidev/react-native-toopago-ui';
 
 export default ({ navigation }: { navigation: any }) => {
   const toggleDrawer = () => navigation.toggleDrawer();

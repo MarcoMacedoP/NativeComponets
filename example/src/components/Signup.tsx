@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import { Signup, InputRounded, DiscountLabel } from 'react-native-toopago-ui';
+import {
+  Signup,
+  InputRounded,
+  DiscountLabel,
+} from '@lomelidev/react-native-toopago-ui';
 
 export default () => {
   function emptyVoid() {

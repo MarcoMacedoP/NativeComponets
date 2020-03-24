@@ -6,7 +6,7 @@ import {
   EmailIcon,
   LockIcon,
   FullscreenModal,
-} from 'react-native-toopago-ui';
+} from '@lomelidev/react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default function App() {

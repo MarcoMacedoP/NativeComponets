@@ -1,5 +1,6 @@
 import React from 'react';
-import { CreditCard } from 'react-native-toopago-ui';
+
+import { CreditCard } from '@lomelidev/react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default () => {

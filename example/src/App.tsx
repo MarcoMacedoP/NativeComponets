@@ -1,15 +1,15 @@
 import * as React from 'react';
-import 'react-native-gesture-handler';
 import {
   ThemeProvider,
   EmailIcon,
   LockIcon,
   CustomDrawerContent,
-} from 'react-native-toopago-ui';
+} from '@lomelidev/react-native-toopago-ui';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Payments from './components/Payments';
 import styled from 'styled-components/native';
+import WalkthorughScreen from './components/Walkthrough';
 import ProfileScreen from './components/Profile';
 const Drawer = createDrawerNavigator();
 
@@ -41,6 +41,7 @@ export default function App() {
                 drawerIcon: LockIcon,
               }}
             />
+            <Drawer.Screen name="Walkthorugh" component={WalkthorughScreen} />
           </Drawer.Navigator>
         </Container>
       </NavigationContainer>
