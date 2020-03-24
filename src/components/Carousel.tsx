@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   button: {},
 });
 
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+const AnimatedFlatList: any = Animated.createAnimatedComponent(FlatList);
 type Props = {
   itemWidth: number;
   containerWidth: number;
@@ -31,7 +31,9 @@ type Props = {
   onScrollBeginDrag?: () => void;
   minScrollDistance?: number;
   onScrollEndDrag?: () => void;
-  renderItem: ({ item, index }: { item: any; index: number }) => ReactNode;
+  renderItem:
+    | (({ item, index }: { item: any; index: number }) => ReactNode)
+    | null;
   inverted?: boolean;
   itemContainerStyle?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
   style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
@@ -40,6 +42,25 @@ type Props = {
     ((item: unknown, index: number) => string) | undefined
   >;
   pagingEnable?: boolean;
+};
+const defaultProps: Props = {
+  inActiveScale: 0.8,
+  inActiveOpacity: 0.8,
+  separatorWidth: 0,
+  containerWidth: width,
+  itemWidth: 0.9 * width,
+  bounces: true,
+  data: [],
+  style: {},
+  initialIndex: 0,
+  pagingEnable: true,
+  minScrollDistance: 20,
+  itemContainerStyle: {},
+  keyExtractor: (_item: any, index: number) => index.toString(),
+  renderItem: null,
+  onScrollEnd: () => {},
+  onScrollBeginDrag: () => {},
+  onScrollEndDrag: () => {},
 };
 class Carousel extends Component<Props> {
   currentIndex: any;
@@ -50,6 +71,8 @@ class Carousel extends Component<Props> {
   handleOnScroll: (...args: any[]) => void;
   xOffset: Animated.Value;
   scrollX: any;
+
+  static defaulProps = defaultProps;
 
   constructor(props: Props) {
     super(props);
@@ -208,7 +231,7 @@ class Carousel extends Component<Props> {
           this.itemAnimatedStyles(index),
         ]}
       >
-        {renderItem({ item, index })}
+        {renderItem && renderItem({ item, index })}
       </Animated.View>
     );
   }
@@ -245,23 +268,4 @@ class Carousel extends Component<Props> {
   }
 }
 
-Carousel.defaultProps = {
-  inActiveScale: 0.8,
-  inActiveOpacity: 0.8,
-  separatorWidth: 0,
-  containerWidth: width,
-  itemWidth: 0.9 * width,
-  bounces: true,
-  data: [],
-  style: {},
-  initialIndex: 0,
-  pagingEnable: true,
-  minScrollDistance: 20,
-  itemContainerStyle: {},
-  keyExtractor: (_item: any, index: number) => index.toString(),
-  renderItem: () => {},
-  onScrollEnd: () => {},
-  onScrollBeginDrag: () => {},
-  onScrollEndDrag: () => {},
-};
 export default Carousel;
