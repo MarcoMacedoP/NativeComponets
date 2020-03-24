@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '../styled-components';
-import { defaultTheme } from 'react-native-toopago-ui';
+import defaultTheme from '../styled-components/theme';
 import { ThemeType } from '../styled-components/theme';
 
 export type ThemeProviderType = React.FC<{
