@@ -5,6 +5,10 @@ import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 
+// Modals
+import ConfirmRawModal from './components/Modals/ConfirmRawModal';
+import FullscreenModal from './components/Modals/FullscreenModal';
+
 import InputRounded from './components/InputRounded';
 //utils
 import defaultTheme from './styled-components/theme';
@@ -20,4 +24,6 @@ export {
   Signup,
   Walkthrough,
   DiscountLabel,
+  ConfirmRawModal,
+  FullscreenModal,
 };
