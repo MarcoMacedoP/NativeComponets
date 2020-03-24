@@ -1,4 +1,3 @@
-/* ts-nochek */
 import React, { Component, ReactNode } from 'react';
 import {
   Animated,
@@ -17,7 +16,7 @@ const styles = StyleSheet.create({
   button: {},
 });
 
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+const AnimatedFlatList: any = Animated.createAnimatedComponent(FlatList);
 type Props = {
   itemWidth: number;
   containerWidth: number;
@@ -31,7 +30,9 @@ type Props = {
   onScrollBeginDrag?: () => void;
   minScrollDistance?: number;
   onScrollEndDrag?: () => void;
-  renderItem: ({ item, index }: { item: any; index: number }) => ReactNode;
+  renderItem:
+    | (({ item, index }: { item: any; index: number }) => ReactNode)
+    | null;
   inverted?: boolean;
   itemContainerStyle?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
   style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
@@ -42,6 +43,8 @@ type Props = {
   pagingEnable?: boolean;
 };
 class Carousel extends Component<Props> {
+  static defaultProps: Props;
+
   currentIndex: any;
   _scrollView: any;
   halfContainerWidth: any;
@@ -208,7 +211,7 @@ class Carousel extends Component<Props> {
           this.itemAnimatedStyles(index),
         ]}
       >
-        {renderItem({ item, index })}
+        {renderItem && renderItem({ item, index })}
       </Animated.View>
     );
   }
@@ -259,7 +262,7 @@ Carousel.defaultProps = {
   minScrollDistance: 20,
   itemContainerStyle: {},
   keyExtractor: (_item: any, index: number) => index.toString(),
-  renderItem: () => {},
+  renderItem: null,
   onScrollEnd: () => {},
   onScrollBeginDrag: () => {},
   onScrollEndDrag: () => {},
