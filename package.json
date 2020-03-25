@@ -11,7 +11,7 @@
     "lib",
     "android",
     "ios",
-    "reactnativetoopagoui.podspec"
+    "lomelidev-react-native-toopago-ui.podspec"
   ],
   "scripts": {
     "test": "jest",
