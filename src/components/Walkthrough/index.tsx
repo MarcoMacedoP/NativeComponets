@@ -18,7 +18,6 @@ type WalkthroughType = React.FC<{
 
 const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-
   const { width } = Dimensions.get('window');
   function renderItem({ item }: { item: WalkthroughItemData; index: number }) {
     return <Item {...item} />;
@@ -39,7 +38,12 @@ const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
           <Circle isSelected={currentIndex === 1} />
           <Circle isSelected={currentIndex === 2} />
         </DotsContainer>
-        <Button text="Continuar" isPrimary onPress={onFinish} />
+        <Button
+          text="Continuar"
+          isEnabled={currentIndex === 2}
+          isPrimary
+          onPress={onFinish}
+        />
       </ControlsContainer>
     </Container>
   );
@@ -56,6 +60,7 @@ const ControlsContainer = styled.View`
 
 const Container = styled.View`
   flex: 1;
+  background: ${props => props.theme.background};
 `;
 const DotsContainer = styled.View`
   width: 100%;

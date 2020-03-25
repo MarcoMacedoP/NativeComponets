@@ -14,6 +14,7 @@ import FullscreenModal from './components/Modals/FullscreenModal';
 
 import InputRounded from './components/InputRounded';
 //utils
+import styled from './styled-components';
 import defaultTheme from './styled-components/theme';
 export * from './components/Icons';
 import Walkthrough from './components/Walkthrough';
@@ -30,4 +31,6 @@ export {
   DiscountLabel,
   ConfirmRawModal,
   FullscreenModal,
+  //utils
+  styled,
 };

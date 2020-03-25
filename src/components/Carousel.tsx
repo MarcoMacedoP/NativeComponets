@@ -109,10 +109,10 @@ class Carousel extends Component<Props> {
       itemWidth,
       separatorWidth = 20,
     } = this.props;
+    if (index < 0 || index >= data.length) return;
     if (onIndexChange) {
       onIndexChange(index);
     }
-    if (index < 0 || index >= data.length) return;
     onScrollEnd && onScrollEnd(data[index], index);
     this.currentIndex = index;
     setTimeout(() => {

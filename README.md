@@ -1,17 +1,25 @@
 # react-native-toopago-ui
 
-The ui for toopago
+Paquete de componentes ui para Toopago.
 
-## Installation
+## Instalacion
+
+Primero necesitas instalar el paquete principal
 
 ```sh
-npm install react-native-toopago-ui
+npm install @lomelidev/react-native-toopago-ui
 ```
 
-## Usage
+Despues de eso agregar `react-native-svg` para que los svg se muestren correctamente en los componentes, de lo contrario dara un error.
+
+```sh
+npm install react-native-svg
+```
+
+## Uso
 
 ```js
-import ToopagoUi from "react-native-toopago-ui";
+import ToopagoUi from 'react-native-toopago-ui';
 
 // ...
 
