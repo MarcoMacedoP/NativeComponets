@@ -11,6 +11,8 @@ import Payments from './components/Payments';
 import styled from 'styled-components/native';
 import WalkthorughScreen from './components/Walkthrough';
 import ProfileScreen from './components/Profile';
+import BackupScreen from './components/Backup';
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -19,6 +21,7 @@ export default function App() {
       <NavigationContainer>
         <Container>
           <Drawer.Navigator
+            initialRouteName="Backup"
             drawerContent={props => (
               <CustomDrawerContent
                 userImageSource={require('./assets/profile-image.png')}
@@ -42,6 +45,7 @@ export default function App() {
               }}
             />
             <Drawer.Screen name="Walkthorugh" component={WalkthorughScreen} />
+            <Drawer.Screen name="Backup" component={BackupScreen} />
           </Drawer.Navigator>
         </Container>
       </NavigationContainer>

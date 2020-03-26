@@ -5,6 +5,7 @@ import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
+import Backup from './components/Backup';
 //drawer
 export * from './components/Drawer';
 
@@ -24,6 +25,7 @@ export {
   defaultTheme,
   ThemeProvider,
   Login,
+  Backup,
   InputRounded,
   Signup,
   Walkthrough,
