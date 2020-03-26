@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp } from 'react-native';
 import styled from 'styled-components/native';
-import { RawModal } from '../RawModal';
+import SwipeModal from './SwipeModal';
 import ButtonBase from '../Button';
 /**
  *  A component to manage modals through app.
@@ -41,18 +41,11 @@ const ConfirmRawModal: ConfirmRawType = ({
   ...styleProps
 }) => {
   return (
-    <RawModal isShowed={isShowed} onClose={onClose} {...styleProps}>
+    <SwipeModal isShowed={isShowed} onClose={onClose} {...styleProps}>
       <Subtitle style={style} {...styleProps}>
-        {' '}
         Confirm your order{' '}
       </Subtitle>
-      {/* <Image
-        source={
-          transactionData.currency === 'AGVC'
-            ? require('assets/icons/agave_coin_icon.png')
-            : require('assets/icons/ethereum_icon.png')
-        }
-      /> */}
+
       <Label style={style} {...styleProps}>
         {transactionData.amount} {transactionData.currency}
       </Label>
@@ -67,7 +60,7 @@ const ConfirmRawModal: ConfirmRawType = ({
       <SmallText style={style} {...styleProps}>
         Toopago SA. CV.
       </SmallText>
-    </RawModal>
+    </SwipeModal>
   );
 };
 type StyledProps = StylesType & {};

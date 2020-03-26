@@ -12,6 +12,7 @@ export * from './components/Drawer';
 // Modals
 import ConfirmRawModal from './components/Modals/ConfirmRawModal';
 import FullscreenModal from './components/Modals/FullscreenModal';
+import SwipeModal from './components/Modals/SwipeModal';
 
 import InputRounded from './components/InputRounded';
 //utils
@@ -33,6 +34,7 @@ export {
   DiscountLabel,
   ConfirmRawModal,
   FullscreenModal,
+  SwipeModal,
   //utils
   styled,
 };

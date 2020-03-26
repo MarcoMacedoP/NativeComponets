@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp } from 'react-native';
 import styled from 'styled-components/native';
-import { RawModal } from '../RawModal';
+import SwipeModal from './SwipeModal';
 import ButtonBase from '../Button';
 /**
  *  A component to manage modals through app.
@@ -10,11 +10,7 @@ import ButtonBase from '../Button';
  *  @param style a styles extra to be showed on the modal.
  *  @param title (optional) an text showed in the top of modal
  */
-type TransactionDataType = {
-  amount: string;
-  usd: string;
-  currency: string;
-};
+
 type StylesType = {
   isPrimary?: boolean;
   isSecondary?: boolean;
@@ -29,19 +25,17 @@ type FullscreenType = React.FC<
     isShowed: boolean;
     style?: StyleProp<any>;
     onClose: () => void;
-    transactionData: TransactionDataType;
   }
 >;
 
 const FullscreenModal: FullscreenType = ({
   onClose,
   isShowed,
-  transactionData,
   style,
   ...styleProps
 }) => {
   return (
-    <RawModal isShowed={isShowed} onClose={onClose} {...styleProps}>
+    <SwipeModal isShowed={isShowed} onClose={onClose} {...styleProps}>
       <Subtitle style={style} {...styleProps}>
         {' '}
         Confirm your order{' '}
@@ -54,10 +48,10 @@ const FullscreenModal: FullscreenType = ({
         }
       /> */}
       <Label style={style} {...styleProps}>
-        {transactionData.amount} {transactionData.currency}
+        lol
       </Label>
       <SmallText style={style} {...styleProps}>
-        ≈{transactionData.usd} USD
+        lol
       </SmallText>
 
       <Button text={'send'} isPrimary onPress={() => console.log('hey')} />
@@ -67,11 +61,13 @@ const FullscreenModal: FullscreenType = ({
       <SmallText style={style} {...styleProps}>
         Toopago SA. CV.
       </SmallText>
-    </RawModal>
+    </SwipeModal>
   );
 };
 type StyledProps = StylesType & {};
-
+const Header = styled.View`
+  background-color: ${props => props.theme.primary};
+`;
 const SmallText = styled.Text<StyledProps>`
   color: #000000;
   margin-top: 15px;
