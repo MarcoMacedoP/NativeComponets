@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   view: {
     justifyContent: 'flex-end',
     margin: 0,
+    flex: 1,
   },
 });
 

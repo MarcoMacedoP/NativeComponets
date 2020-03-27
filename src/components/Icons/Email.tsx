@@ -6,16 +6,15 @@ import { Animated } from 'react-native';
 
 const G = Animated.createAnimatedComponent(GBase);
 
-const EmailIcon: IconType = ({ style, color }) => {
-  const defaultColor = '#aca8a8';
+const EmailIcon: IconType = ({ style, color = '#aca8a8' }) => {
   return (
     <IconContainer style={style}>
       <Svg width="100%" height="100%" viewBox="0 0 13.163 10.161">
         <G transform="translate(.15 -59.583)">
           <G data-name="Grupo 1326" transform="translate(0 59.733)">
             <G
-              fill={color || defaultColor}
-              stroke={color || defaultColor}
+              fill={color}
+              stroke={color}
               strokeWidth="0.3"
               data-name="Grupo 1325"
             >
