@@ -32,7 +32,6 @@ const Container = styled.View`
   justify-content: center;
   flex: 1;
   flex-direction: row;
-  /* border: 1px solid red; */
 `;
 const Text = styled.Text`
   font-size: 16px;
@@ -42,5 +41,4 @@ const Text = styled.Text`
   width: 100%;
   text-align: center;
   margin-top: 24px;
-  /* border: 1px solid red; */
 `;
