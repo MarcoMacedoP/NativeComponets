@@ -9,8 +9,9 @@ export type ButtonStylesType = {
   isSecondaryDark?: boolean;
 };
 
-type StyledProps = ButtonStylesType & {
-  hasStyles: boolean;
+type StyledProps = {
+  color: string;
+  isEnabled: boolean;
 };
 
 export const ButtonTouchable = styled.TouchableOpacity<StyledProps>`
@@ -21,22 +22,16 @@ export const ButtonTouchable = styled.TouchableOpacity<StyledProps>`
   height: 40px;
   border-radius: ${props => props.theme.borderRadius}px;
   background-color: ${props =>
-    !props.isEnabled
-      ? props.theme.gray
-      : props.isPrimary
-      ? props.theme.primary
-      : props.isSecondary
-      ? props.theme.secondary
-      : props.isSecondaryDark
-      ? props.theme.secondaryDark
-      : 'transparent'};
+    props.isEnabled
+      ? props.color
+        ? props.color
+        : 'transparent'
+      : props.theme.gray};
 `;
 
 export const ButtonText = styled.Text<StyledProps>`
   color: ${props =>
-    props.isOutline || !props.hasStyles
-      ? props.theme.secondary
-      : props.theme.background};
-  text-transform: ${p => (!p.hasStyles ? 'none' : 'uppercase')};
+    props.color ? props.theme.background : props.theme.secondary};
+  text-transform: ${props => (props.color ? 'uppercase' : 'none')};
   align-self: center;
 `;

@@ -12,6 +12,7 @@ import styled from 'styled-components/native';
 import WalkthorughScreen from './components/Walkthrough';
 import ProfileScreen from './components/Profile';
 import BackupScreen from './components/Backup';
+import LoginScreen from './components/Login';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +47,7 @@ export default function App() {
             />
             <Drawer.Screen name="Walkthorugh" component={WalkthorughScreen} />
             <Drawer.Screen name="Backup" component={BackupScreen} />
+            <Drawer.Screen name="Login" component={LoginScreen} />
           </Drawer.Navigator>
         </Container>
       </NavigationContainer>

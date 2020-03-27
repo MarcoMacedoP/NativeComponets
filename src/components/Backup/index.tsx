@@ -4,7 +4,7 @@ import { KeyIcon, CrossIcon, EmailIcon } from '../Icons';
 import Button from '../Button';
 import InputRounded from '../InputRounded';
 import SuccessModal, { SuccessModalProps } from './SuccessModal';
-
+import { StatusBar } from 'react-native';
 type Props = SuccessModalProps & {
   onSubmit: () => void;
   /** The value of the email input*/
@@ -21,6 +21,7 @@ type BackupType = React.FC<Props>;
 const Backup: BackupType = ({ email = '', ...props }) => {
   return (
     <>
+      <StatusBar barStyle="light-content" />
       <Container>
         <Header>
           <KeyIcon />
@@ -53,8 +54,8 @@ const Backup: BackupType = ({ email = '', ...props }) => {
   );
 };
 
-const Container = styled.SafeAreaView`
-  background-color: ${props => props.theme.primary};
+const Container = styled.View`
+  background-color: ${props => props.theme.background};
   flex: 1;
 `;
 const Header = styled.View`
@@ -62,6 +63,7 @@ const Header = styled.View`
   align-items: center;
   justify-content: center;
   flex: 2;
+  background-color: ${props => props.theme.primary};
 `;
 const Title = styled.Text`
   color: ${props => props.theme.background};

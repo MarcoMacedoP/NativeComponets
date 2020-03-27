@@ -2,9 +2,8 @@ import Item from './Item';
 import React from 'react';
 import Carrousel from '../Carousel';
 import styled from '../../styled-components';
-import { Dimensions } from 'react-native';
+import { Dimensions, StatusBar } from 'react-native';
 import Button from '../Button';
-
 export type WalkthroughItemData = {
   image: any;
   title: string;
@@ -24,6 +23,7 @@ const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
   }
   return (
     <Container>
+      <StatusBar barStyle="dark-content" />
       <StyledCarrousel
         onIndexChange={setCurrentIndex}
         containerWidth={width}
@@ -53,7 +53,7 @@ const StyledCarrousel = styled(Carrousel)`
 `;
 const ControlsContainer = styled.View`
   flex: 1;
-  padding: 16px;
+  padding: 16px 16px 32px;
   justify-content: flex-end;
   align-items: center;
 `;

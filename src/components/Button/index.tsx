@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleProp } from 'react-native';
 import { ButtonStylesType, ButtonText, ButtonTouchable } from './styles';
-
+import { useThemeColor } from '../../hooks/useThemeColor';
 type ButtonType = React.FC<
   ButtonStylesType & {
     text: string;
@@ -18,36 +18,14 @@ const Button: ButtonType = ({
   isEnabled = true,
   ...styleProps
 }) => {
-  const [hasStyles, setHasStyles] = React.useState(false);
-
-  useEffect(() => {
-    const {
-      isOutline,
-      isPrimary,
-      isSecondary,
-      isSecondaryDark,
-      isSecondaryLigth,
-    } = styleProps;
-    if (
-      isEnabled ||
-      isOutline ||
-      isPrimary ||
-      isSecondary ||
-      isSecondaryDark ||
-      isSecondaryLigth
-    ) {
-      setHasStyles(true);
-    } else {
-      setHasStyles(false);
-    }
-  }, [styleProps, isEnabled]);
+  const color = useThemeColor(styleProps);
 
   //handlers
   const handlePress = () => isEnabled && onPress();
 
   return (
     <ButtonTouchable
-      hasStyles={hasStyles}
+      color={color}
       style={[style]}
       {...styleProps}
       isEnabled={isEnabled}
@@ -55,7 +33,7 @@ const Button: ButtonType = ({
       activeOpacity={isEnabled ? 0.6 : 1}
     >
       {children && children}
-      <ButtonText {...styleProps} hasStyles={hasStyles}>
+      <ButtonText color={color} {...styleProps}>
         {text}
       </ButtonText>
     </ButtonTouchable>

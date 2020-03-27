@@ -34,7 +34,7 @@ export function useThemeColor({
       ? theme.secondaryDark
       : isSecondaryLigth
       ? theme.secondaryLigth
-      : 'transparent';
+      : null;
     setColor(themeColor);
   }, [
     isDanger,
