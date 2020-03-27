@@ -5,17 +5,14 @@ import {
   InputRounded as InputBase,
   EmailIcon,
   LockIcon,
-  FullscreenModal,
 } from '@lomelidev/react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [modalIsShowed, setModalIsShowed] = useState(false);
   const emptyVoid = () => {
     console.log('hey');
-    setModalIsShowed(true);
   };
   return (
     <ThemeProvider>
@@ -44,15 +41,6 @@ export default function App() {
           <LockIcon />
         </Input>
       </Login>
-      <FullscreenModal
-        transactionData={{
-          amount: '0.000012',
-          usd: '0.02',
-          currency: 'AGVC',
-        }}
-        isShowed={modalIsShowed}
-        onClose={() => setModalIsShowed(false)}
-      />
     </ThemeProvider>
   );
 }

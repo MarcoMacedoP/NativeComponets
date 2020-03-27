@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleProp, StyleSheet, SafeAreaView } from 'react-native';
+import { StyleProp, StyleSheet, StatusBar } from 'react-native';
 import styled from '../../styled-components';
-import ButtonBase from '../Button';
 import { useThemeColor, StylesType } from '../../hooks/useThemeColor';
 import Modal from 'react-native-modal';
 import { CrossIcon } from '../Icons';
@@ -10,7 +9,7 @@ type FullscreenType = React.FC<
     isShowed: boolean;
     style?: StyleProp<any>;
     onClose: () => void;
-    icon?: React.FC<any>;
+    icon?: React.FC<{ color?: string; style?: any }>;
   }
 >;
 /**
@@ -40,6 +39,7 @@ const FullscreenModal: FullscreenType = ({
       onModalHide={onClose}
       swipeDirection={['down']}
     >
+      <StatusBar backgroundColor={color} barStyle="light-content" />
       <Container style={style}>
         <Header color={color}>
           <CloseIconContainer onPress={onClose}>
@@ -66,8 +66,10 @@ const styles = StyleSheet.create({
     height: 80,
   },
 });
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   flex: 1;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   background-color: ${props => props.theme.background};
 `;
 const Header = styled.View<StyledProps>`
@@ -76,9 +78,8 @@ const Header = styled.View<StyledProps>`
   min-height: 50px;
   width: 100%;
   align-items: center;
-  padding: 16px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  padding: 24px 16px 16px;
+  border-radius: 12px;
 `;
 const CloseIconContainer = styled.TouchableOpacity`
   align-self: flex-end;
