@@ -4,6 +4,7 @@ import styled from '../../styled-components';
 import { useThemeColor, StylesType } from '../../hooks/useThemeColor';
 import Modal from 'react-native-modal';
 import { CrossIcon } from '../Icons';
+
 type FullscreenType = React.FC<
   StylesType & {
     isShowed: boolean;

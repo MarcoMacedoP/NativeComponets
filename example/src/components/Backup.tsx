@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Backup,
-  FullscreenModal,
-  EmailIcon,
-} from '@lomelidev/react-native-toopago-ui';
+import { Backup } from '@lomelidev/react-native-toopago-ui';
 
 export default () => {
   const [email, setEmail] = React.useState('');
@@ -12,6 +8,9 @@ export default () => {
   function handleSubmit() {
     setIsShowed(true);
   }
+  function closeModal() {
+    setIsShowed(false);
+  }
 
   return (
     <>
@@ -19,13 +18,8 @@ export default () => {
         email={email}
         onEmailChange={setEmail}
         onSubmit={handleSubmit}
-        onClose={handleSubmit}
-      />
-      <FullscreenModal
-        isSecondaryDark
-        isShowed={isShowed}
-        icon={EmailIcon}
-        onClose={() => setIsShowed(false)}
+        onCloseModal={closeModal}
+        isModalShowed={isShowed}
       />
     </>
   );

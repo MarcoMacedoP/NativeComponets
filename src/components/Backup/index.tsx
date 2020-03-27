@@ -3,40 +3,53 @@ import styled from '../../styled-components';
 import { KeyIcon, CrossIcon, EmailIcon } from '../Icons';
 import Button from '../Button';
 import InputRounded from '../InputRounded';
+import SuccessModal, { SuccessModalProps } from './SuccessModal';
 
-type BackupType = React.FC<{
-  onClose: () => void;
+type Props = SuccessModalProps & {
   onSubmit: () => void;
+  /** The value of the email input*/
   email: string;
+  /** Function to be called when the email input change*/
   onEmailChange: (value: string) => void;
-}>;
+};
+type BackupType = React.FC<Props>;
 
+/**
+ *
+ * @param {Props} props
+ */
 const Backup: BackupType = ({ email = '', ...props }) => {
   return (
-    <Container>
-      <Header>
-        <KeyIcon />
-        <Title>Recuperar cuenta</Title>
-      </Header>
-      <Content>
-        <FormContainer>
-          <CrossIcon />
-          {props.children ? (
-            props.children
-          ) : (
-            <Input
-              value={email}
-              onChangeText={props.onEmailChange}
-              placeholder="Ingresa el email de tu cuenta"
-            >
-              <EmailIcon />
-            </Input>
-          )}
-        </FormContainer>
+    <>
+      <Container>
+        <Header>
+          <KeyIcon />
+          <Title>Recuperar cuenta</Title>
+        </Header>
+        <Content>
+          <FormContainer>
+            <CrossIcon />
+            {props.children ? (
+              props.children
+            ) : (
+              <Input
+                value={email}
+                onChangeText={props.onEmailChange}
+                placeholder="Ingresa el email de tu cuenta"
+              >
+                <EmailIcon />
+              </Input>
+            )}
+          </FormContainer>
 
-        <Button text="Recuperar cuenta" isPrimary onPress={props.onSubmit} />
-      </Content>
-    </Container>
+          <Button text="Recuperar cuenta" isPrimary onPress={props.onSubmit} />
+        </Content>
+      </Container>
+      <SuccessModal
+        isModalShowed={props.isModalShowed}
+        onCloseModal={props.onCloseModal}
+      />
+    </>
   );
 };
 
