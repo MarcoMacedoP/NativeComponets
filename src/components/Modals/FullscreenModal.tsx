@@ -17,13 +17,12 @@ type FullscreenType = React.FC<
  *  @param isShowed indicates if modal is showed
  *  @param onClose a function to be called when the modal closes.
  *  @param style a styles extra to be showed on the modal.
- *  @param title (optional) an text showed in the top of modal
+ * @param icon a React Functional component to be rendered in the middle of header.
  */
 const FullscreenModal: FullscreenType = ({
   onClose,
   isShowed,
   style,
-
   children,
   icon,
   ...styleProps
