@@ -21,7 +21,7 @@ export function useThemeColor({
   isSecondaryLigth,
 }: StylesType) {
   const theme: ThemeType = useContext(ThemeContext);
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState<string | null>('');
 
   useEffect(() => {
     const themeColor = isDanger

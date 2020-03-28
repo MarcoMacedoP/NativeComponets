@@ -10,11 +10,12 @@ export type ButtonStylesType = {
 };
 
 type StyledProps = {
-  color: string;
+  color: string | null;
+};
+type TouchableProps = StyledProps & {
   isEnabled: boolean;
 };
-
-export const ButtonTouchable = styled.TouchableOpacity<StyledProps>`
+export const ButtonTouchable = styled.TouchableOpacity<TouchableProps>`
   flex-direction: row;
   width: 100%;
   align-items: center;

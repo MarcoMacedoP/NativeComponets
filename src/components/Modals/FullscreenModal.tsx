@@ -39,7 +39,10 @@ const FullscreenModal: FullscreenType = ({
       onModalHide={onClose}
       swipeDirection={['down']}
     >
-      <StatusBar backgroundColor={color} barStyle="light-content" />
+      <StatusBar
+        backgroundColor={color || 'transparent'}
+        barStyle="light-content"
+      />
       <Container style={style}>
         <Header color={color}>
           <CloseIconContainer onPress={onClose}>
@@ -53,7 +56,7 @@ const FullscreenModal: FullscreenType = ({
   );
 };
 type StyledProps = {
-  color: string;
+  color: string | null;
 };
 const styles = StyleSheet.create({
   modal: {
