@@ -13,6 +13,7 @@ import WalkthorughScreen from './components/Walkthrough';
 import ProfileScreen from './components/Profile';
 import BackupScreen from './components/Backup';
 import LoginScreen from './components/Login';
+import Keyboard from './components/Keyboard';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,7 +23,7 @@ export default function App() {
       <NavigationContainer>
         <Container>
           <Drawer.Navigator
-            initialRouteName="Backup"
+            initialRouteName="Keyboard"
             drawerContent={props => (
               <CustomDrawerContent
                 userImageSource={require('./assets/profile-image.png')}
@@ -48,6 +49,7 @@ export default function App() {
             <Drawer.Screen name="Walkthorugh" component={WalkthorughScreen} />
             <Drawer.Screen name="Backup" component={BackupScreen} />
             <Drawer.Screen name="Login" component={LoginScreen} />
+            <Drawer.Screen name="Keyboard" component={Keyboard} />
           </Drawer.Navigator>
         </Container>
       </NavigationContainer>
