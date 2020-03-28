@@ -18,7 +18,6 @@ const NumericKeyboard: NumericKeyboardType = ({
   applyBackspaceTint = true,
   value,
 }) => {
-  const decimal = true;
   const backspaceImg = require('./backspace.png');
   const [text, setText] = useState(value);
   useEffect(() => {
@@ -26,16 +25,14 @@ const NumericKeyboard: NumericKeyboardType = ({
   }, [value]);
 
   const Backspace = () => {
+    const handlePress = () => onClick('back');
+    const handleLongPress = () => onClick('longback');
     return (
       <TouchableOpacity
         accessibilityLabel="backspace"
         style={styles.backspace}
-        onLongPress={() => {
-          onClick('longback');
-        }}
-        onPress={() => {
-          onClick('back');
-        }}
+        onPress={handlePress}
+        onLongPress={handleLongPress}
       >
         <Image
           source={backspaceImg}
@@ -65,37 +62,22 @@ const NumericKeyboard: NumericKeyboardType = ({
     );
   };
 
-  const onClick = (val: any) => {
-    let curText = text;
-    if (val === '0') {
-      if (text !== '0') {
-        if (isNaN(val)) {
-          if (val === 'back') {
-            curText = curText.slice(0, -1);
-          } else if (val === 'longback') {
-            curText = '';
-          } else {
-            curText += val;
-          }
-        } else {
-          curText += val;
-        }
-      }
+  const onClick = (keyPressed: any) => {
+    let currentValue = text;
+    if (keyPressed === '0' && currentValue === '0') {
+      return;
+    } else if (keyPressed === '.') {
+      if (currentValue.includes('.')) return;
+      currentValue += keyPressed;
+    } else if (keyPressed === 'back') {
+      currentValue = currentValue.slice(0, -1);
+    } else if (keyPressed === 'longback') {
+      currentValue = '';
     } else {
-      if (isNaN(val)) {
-        if (val === 'back') {
-          curText = curText.slice(0, -1);
-        } else if (val === 'longback') {
-          curText = '';
-        } else {
-          curText += val;
-        }
-      } else {
-        curText += val;
-      }
+      currentValue += keyPressed;
     }
-    setText(curText);
-    onPress(curText);
+    setText(currentValue);
+    onPress(currentValue);
   };
 
   return (
@@ -104,7 +86,7 @@ const NumericKeyboard: NumericKeyboardType = ({
       {Row([4, 5, 6])}
       {Row([7, 8, 9])}
       <View style={styles.row}>
-        {decimal ? Cell('.') : <View style={{ flex: 1 }} />}
+        {Cell('.')}
         {Cell(0)}
         {Backspace()}
       </View>
