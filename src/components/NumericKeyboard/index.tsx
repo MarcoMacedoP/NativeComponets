@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
-
-import { Text, View, TouchableOpacity, Image } from 'react-native';
-
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import defaultTheme from '../../styled-components/theme';
 import { styles } from './styles';
 
 type NumericKeyboardProps = {
@@ -9,14 +15,16 @@ type NumericKeyboardProps = {
   onPress?: any;
   applyBackspaceTint?: boolean;
   value: string;
+  style?: StyleProp<ViewStyle>;
 };
 type NumericKeyboardType = React.FC<NumericKeyboardProps>;
 
 const NumericKeyboard: NumericKeyboardType = ({
-  color = 'black',
+  color = defaultTheme.primary,
   onPress,
   applyBackspaceTint = true,
   value,
+  style,
 }) => {
   const backspaceImg = require('./backspace.png');
   const [text, setText] = useState(value);
@@ -81,7 +89,7 @@ const NumericKeyboard: NumericKeyboardType = ({
   };
 
   return (
-    <View style={[styles.container]}>
+    <View style={[styles.container, style]}>
       {Row([1, 2, 3])}
       {Row([4, 5, 6])}
       {Row([7, 8, 9])}

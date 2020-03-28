@@ -6,15 +6,11 @@ export const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     alignItems: 'flex-start',
-    borderColor: 'red',
-    borderWidth: 1,
   },
   row: {
     flexDirection: 'row',
     marginTop: 15,
     width: '100%',
-    borderColor: 'blue',
-    borderWidth: 1,
   },
   number: {
     fontSize: 25,
