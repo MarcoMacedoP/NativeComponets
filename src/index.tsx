@@ -6,6 +6,7 @@ import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
 import Backup from './components/Backup';
+import NumericKeyboard from './components/NumericKeyboard';
 //drawer
 export * from './components/Drawer';
 
@@ -35,6 +36,7 @@ export {
   ConfirmRawModal,
   FullscreenModal,
   SwipeModal,
+  NumericKeyboard,
   //utils
   styled,
 };
