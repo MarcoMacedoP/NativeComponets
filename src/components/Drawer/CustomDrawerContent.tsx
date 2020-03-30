@@ -1,11 +1,18 @@
 import React, { useContext } from 'react';
-import DrawerHeader, { DrawerHeaderProps } from './DrawerHeader';
+import DrawerHeader from './DrawerHeader';
 import {
   DrawerItemList,
   DrawerContentComponentProps,
 } from '@react-navigation/drawer';
 import { ThemeType } from 'src/styled-components/theme';
 import { ThemeContext } from 'styled-components';
+import { ImageSourcePropType } from 'react-native';
+
+export type DrawerHeaderProps = {
+  userImageSource: ImageSourcePropType;
+  userName: string;
+};
+
 type CustomDrawerContentType = React.FC<
   DrawerContentComponentProps & DrawerHeaderProps
 >;
