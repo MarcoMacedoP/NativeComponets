@@ -86,6 +86,7 @@ const StyledInput = styled(AnimatedInput)<{ hasCenterText?: boolean }>`
   width: 100%;
   padding: 8px 0 8px 8px;
   min-height: 36px;
+  text-transform: none;
 `;
 
 export default InputRounded;
