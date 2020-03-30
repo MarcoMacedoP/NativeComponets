@@ -2,31 +2,24 @@ import React from 'react';
 import { IconType } from '.';
 import { Svg, G, Path } from 'react-native-svg';
 
-const Circles: IconType = ({ style }) => (
-  <Svg width="218" height="100%" style={style} viewBox="0 0 218 67">
-    <G
-      id="Enmascarar_grupo_19"
-      data-name="Enmascarar grupo 19"
-      transform="translate(-2500 176)"
-      clip-path="url(#clip-path)"
-    >
-      <G id="circles">
-        <Path
-          id="circle"
-          d="M59,0c32.585,0,59,26.191,59,58.5S91.585,117,59,117,0,90.809,0,58.5,26.415,0,59,0Z"
-          transform="translate(2641 -202)"
-          fill="#fff"
-          opacity="0.33"
-        />
-        <Path
-          id="circle-2"
-          data-name="circle"
-          d="M59,0c32.585,0,59,26.191,59,58.5S91.585,117,59,117,0,90.809,0,58.5,26.415,0,59,0Z"
-          transform="translate(2609 -201)"
-          fill="#fff"
-          opacity="0.33"
-        />
-      </G>
+const Circles: IconType = ({ style, color = '#fff' }) => (
+  <Svg width="100%" height="200%" viewBox="0 0 150 118" style={style}>
+    <G id="Grupo_5615" data-name="Grupo 5615" transform="translate(-5016 256)">
+      <Path
+        id="circle"
+        d="M59,0c32.585,0,59,26.191,59,58.5S91.585,117,59,117,0,90.809,0,58.5,26.415,0,59,0Z"
+        transform="translate(5048 -256)"
+        fill={color}
+        opacity="0.33"
+      />
+      <Path
+        id="circle-2"
+        data-name="circle"
+        d="M59,0c32.585,0,59,26.191,59,58.5S91.585,117,59,117,0,90.809,0,58.5,26.415,0,59,0Z"
+        transform="translate(5016 -255)"
+        fill={color}
+        opacity="0.33"
+      />
     </G>
   </Svg>
 );
