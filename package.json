@@ -1,6 +1,6 @@
 {
   "name": "@lomelidev/react-native-toopago-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "The ui for toopago",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
