@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '../styled-components';
+import styled from '../../styled-components';
 import { StyleProp } from 'react-native';
 
 type StylesType = {

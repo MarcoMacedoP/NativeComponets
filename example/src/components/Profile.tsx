@@ -1,10 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import { Text, View, Dimensions, Image } from 'react-native';
 import {
   DrawerNavbar,
   Button,
   SwipeModal,
+  Card,
 } from '@lomelidev/react-native-toopago-ui';
 export default ({ navigation }: { navigation: any }) => {
   const toggleDrawer = () => navigation.toggleDrawer();
@@ -25,10 +26,36 @@ export default ({ navigation }: { navigation: any }) => {
         onMenuPress={toggleDrawer}
         onNotificationPress={toggleDrawer}
       />
+
+      <View
+        style={{
+          padding: 16,
+        }}
+      >
+        <View style={{ height: 150 }}>
+          <Card onPress={toggleModal}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Image
+                source={require('../assets/btc-icon.png')}
+                style={{ height: 32, width: 32 }}
+                resizeMode="contain"
+              />
+              <Text style={{ color: 'orange', fontSize: 26 }}>BTC</Text>
+            </View>
+          </Card>
+        </View>
+
+        <Button text="Abir un modal" onPress={toggleModal} isPrimary />
+      </View>
       <SwipeModal isShowed={isModalShowed} onClose={closeModal}>
-        <Text>Profile screen</Text>
+        <Text>Este es un modal</Text>
       </SwipeModal>
-      <Button text="Open modal" onPress={toggleModal} />
     </View>
   );
 };
