@@ -7,7 +7,7 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import { ThemeType } from 'src/styled-components/theme';
+import { ThemeType } from '../styled-components/theme';
 import { ThemeContext } from 'styled-components';
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 type Props = {

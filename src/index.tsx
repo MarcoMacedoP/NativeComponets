@@ -7,7 +7,7 @@ import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
 import Backup from './components/Backup';
 import InputRounded from './components/InputRounded';
-
+import CheckedBox from './components/CheckedBox';
 import NumericKeyboard from './components/NumericKeyboard';
 //drawer
 export * from './components/Drawer';
@@ -29,6 +29,7 @@ export {
   defaultTheme,
   ThemeProvider,
   Login,
+  CheckedBox,
   Backup,
   InputRounded,
   Signup,
