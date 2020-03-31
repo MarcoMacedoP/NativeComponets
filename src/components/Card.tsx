@@ -2,24 +2,6 @@ import React, { useEffect } from 'react';
 import styled from '../styled-components';
 import { StyleProp } from 'react-native';
 
-// COMPONENT
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <Card
-  content={[
-    {
-      title: 'Editar perfil',
-      desc: '$2,600.00',
-    },
-  ]}
-  isPrimary
-  onPress={props.onLogin}
->
-  <FacebookIcon source={facebookIcon} />
-  <Text>$20</Text>
-</Card> */
-}
-
 type StylesType = {
   isPrimary?: boolean;
   isSecondary?: boolean;
@@ -126,8 +108,8 @@ const IconBox = styled.View<StyledProps>`
   height: 100px;
   align-items: center;
   justify-content: center;
-  border-top-start-radius: ${props => props.theme.borderRadius}px;
-  border-bottom-start-radius: ${props => props.theme.borderRadius}px;
+  border-top-left-radius: ${props => props.theme.borderRadius}px;
+  border-top-right-radius: ${props => props.theme.borderRadius}px;
   background-color: ${props =>
     props.isPrimary
       ? props.theme.primary

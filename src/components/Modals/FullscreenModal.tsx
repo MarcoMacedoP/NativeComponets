@@ -29,7 +29,7 @@ const FullscreenModal: FullscreenType = ({
   ...styleProps
 }) => {
   const color = useThemeColor(styleProps);
-
+  console.log({ color });
   return (
     <Modal
       isVisible={isShowed}
@@ -39,10 +39,7 @@ const FullscreenModal: FullscreenType = ({
       onModalHide={onClose}
       swipeDirection={['down']}
     >
-      <StatusBar
-        backgroundColor={color || 'transparent'}
-        barStyle="light-content"
-      />
+      <StatusBar backgroundColor={'transparent'} barStyle="light-content" />
       <Container style={style}>
         <Header color={color}>
           <CloseIconContainer onPress={onClose}>
@@ -76,7 +73,7 @@ const Container = styled.View`
   background-color: ${props => props.theme.background};
 `;
 const Header = styled.View<StyledProps>`
-  background-color: ${props => props.color};
+  background-color: ${props => props.color || props.theme.grayLigth};
   flex: 1;
   min-height: 50px;
   width: 100%;

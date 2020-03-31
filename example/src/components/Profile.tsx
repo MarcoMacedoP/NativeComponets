@@ -1,10 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Dimensions } from 'react-native';
-import { DrawerNavbar } from '@lomelidev/react-native-toopago-ui';
-
+import {
+  DrawerNavbar,
+  Button,
+  SwipeModal,
+} from '@lomelidev/react-native-toopago-ui';
 export default ({ navigation }: { navigation: any }) => {
   const toggleDrawer = () => navigation.toggleDrawer();
+  const [isModalShowed, setIsModalShowed] = useState(false);
+  const toggleModal = () => setIsModalShowed(!isModalShowed);
+  const closeModal = () => setIsModalShowed(false);
   return (
     <View
       style={{
@@ -19,8 +25,10 @@ export default ({ navigation }: { navigation: any }) => {
         onMenuPress={toggleDrawer}
         onNotificationPress={toggleDrawer}
       />
-
-      <Text>Profile screen</Text>
+      <SwipeModal isShowed={isModalShowed} onClose={closeModal}>
+        <Text>Profile screen</Text>
+      </SwipeModal>
+      <Button text="Open modal" onPress={toggleModal} />
     </View>
   );
 };
