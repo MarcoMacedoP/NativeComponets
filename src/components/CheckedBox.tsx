@@ -14,13 +14,15 @@ type Props = {
   initialCheck?: boolean;
   style?: StyleProp<ViewStyle>;
   onCheck?: (isChecked: boolean) => void;
+  isChecked: boolean;
+  setIsChecked: (newValue: boolean) => void;
 };
 const CheckedBox: React.FC<Props> = ({
   style,
   onCheck,
-  initialCheck = false,
+  isChecked,
+  setIsChecked,
 }) => {
-  const [isChecked, setIsChecked] = React.useState(initialCheck);
   const [hasChecked, setHasChecked] = React.useState(false);
 
   const [animatedValue] = useState(new Animated.Value(0));

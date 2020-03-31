@@ -6,7 +6,7 @@ import Dots from '../Icons/Dots';
 type CreditCardType = React.FC<{
   card: 'visa' | 'mastercard';
   digits: number | string;
-  onChecked: () => void;
+  onChecked: (newCheckedValue: boolean) => void;
   isChecked: boolean;
 }>;
 const CreditCard: CreditCardType = props => {
@@ -18,7 +18,10 @@ const CreditCard: CreditCardType = props => {
     <Container>
       <CardImage source={image} />
       <CardNumbers>{props.digits || '2342342342342'}</CardNumbers>
-      <StyledCheckedBox initialCheck={props.isChecked} />
+      <StyledCheckedBox
+        isChecked={props.isChecked}
+        setIsChecked={props.onChecked}
+      />
       <StyledDots />
     </Container>
   );

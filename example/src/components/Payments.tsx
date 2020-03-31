@@ -1,29 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { CreditCard } from '@lomelidev/react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default () => {
-  const onChecked = () => console.log('hello there');
+  const [isCardChecked, setIsCardChecked] = useState(false);
+  const [isSecondCardChecked, setIsSecondCardChecked] = useState(false);
+  const [isThirdCardChecked, setIsThirdCardChecked] = useState(false);
   return (
     <CardsContainer>
       <CreditCard
         card="visa"
         digits={123132112}
-        isChecked={false}
-        onChecked={onChecked}
+        isChecked={isCardChecked}
+        onChecked={setIsCardChecked}
       />
       <CreditCard
         card="mastercard"
         digits={123132112}
-        isChecked={true}
-        onChecked={onChecked}
+        isChecked={isSecondCardChecked}
+        onChecked={setIsSecondCardChecked}
       />
       <CreditCard
         card="visa"
         digits={123132112}
-        isChecked={false}
-        onChecked={onChecked}
+        isChecked={isThirdCardChecked}
+        onChecked={setIsThirdCardChecked}
       />
     </CardsContainer>
   );
