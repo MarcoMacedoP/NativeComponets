@@ -39,14 +39,14 @@ const CheckedBox: React.FC<Props> = ({
       setHasChecked(true);
     }
     const toValue = isChecked ? 0 : 255;
-    setIsChecked(!isChecked);
     Animated.timing(animatedValue, {
       toValue,
       duration: ANIMATION_TIME,
       easing: Easing.circle,
-    }).start();
-
-    if (onCheck) onCheck(isChecked);
+    }).start(() => {
+      if (onCheck) onCheck(isChecked);
+    });
+    setIsChecked(!isChecked);
   }
 
   return (
@@ -56,7 +56,7 @@ const CheckedBox: React.FC<Props> = ({
           <AnimatedRect
             width="24"
             height="24"
-            fill={hasChecked ? interpolatedColor : intialColor}
+            fill={hasChecked && isChecked ? interpolatedColor : intialColor}
             data-name="Rectángulo 1125"
             opacity="0.51"
             rx="7"
