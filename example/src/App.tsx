@@ -23,7 +23,7 @@ export default function App() {
       <NavigationContainer>
         <Container>
           <Drawer.Navigator
-            initialRouteName="Keyboard"
+            initialRouteName="Payments"
             drawerContent={props => (
               <CustomDrawerContent
                 userImageSource={require('./assets/profile-image.png')}

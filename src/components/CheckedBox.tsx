@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { Svg, G, Rect, Path } from 'react-native-svg';
 import {
   ViewStyle,
@@ -13,39 +13,46 @@ const AnimatedRect = Animated.createAnimatedComponent(Rect);
 type Props = {
   initialCheck?: boolean;
   style?: StyleProp<ViewStyle>;
-  onCheck?: (isChecked: boolean) => void;
   isChecked: boolean;
   setIsChecked: (newValue: boolean) => void;
 };
 const CheckedBox: React.FC<Props> = ({
   style,
-  onCheck,
-  isChecked,
+  isChecked = false,
   setIsChecked,
 }) => {
-  const [hasChecked, setHasChecked] = React.useState(false);
-
+  const ANIMATION_TIME = 255;
   const [animatedValue] = useState(new Animated.Value(0));
   const theme: ThemeType = useContext(ThemeContext);
-  const intialColor = isChecked ? theme.secondary : theme.gray;
+
+  const handleAnimation = useCallback(
+    (toValue: number) =>
+      Animated.timing(animatedValue, {
+        toValue,
+        duration: ANIMATION_TIME,
+        easing: Easing.circle,
+      }).start(),
+    [animatedValue]
+  );
+
+  /**
+   * Hook that handle the changes in the
+   * isChecked value and trigger the animation
+   */
+  useEffect(() => {
+    if (!isChecked) {
+      handleAnimation(0);
+    } else {
+      handleAnimation(255);
+    }
+  }, [isChecked, animatedValue, handleAnimation]);
+
   const interpolatedColor = animatedValue.interpolate({
     inputRange: [0, 255],
     outputRange: [theme.gray, theme.secondary],
   });
-  const ANIMATION_TIME = 400;
 
   function handleCheck() {
-    if (!hasChecked) {
-      setHasChecked(true);
-    }
-    const toValue = isChecked ? 0 : 255;
-    Animated.timing(animatedValue, {
-      toValue,
-      duration: ANIMATION_TIME,
-      easing: Easing.circle,
-    }).start(() => {
-      if (onCheck) onCheck(isChecked);
-    });
     setIsChecked(!isChecked);
   }
 
@@ -56,7 +63,7 @@ const CheckedBox: React.FC<Props> = ({
           <AnimatedRect
             width="24"
             height="24"
-            fill={hasChecked && isChecked ? interpolatedColor : intialColor}
+            fill={interpolatedColor}
             data-name="Rectángulo 1125"
             opacity="0.51"
             rx="7"

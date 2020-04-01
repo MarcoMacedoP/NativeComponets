@@ -5,27 +5,36 @@ import styled from 'styled-components/native';
 
 export default () => {
   const [isCardChecked, setIsCardChecked] = useState(false);
-  const [isSecondCardChecked, setIsSecondCardChecked] = useState(false);
-  const [isThirdCardChecked, setIsThirdCardChecked] = useState(false);
+  const [isSecondCardChecked, setIsSecondCardChecked] = useState(true);
+  const handleCheck = (value: boolean) => {
+    if (isSecondCardChecked && value) {
+      setIsSecondCardChecked(false);
+      setIsCardChecked(true);
+    } else {
+      setIsCardChecked(value);
+    }
+  };
+  const handleSecondCheck = (value: boolean) => {
+    if (isCardChecked && value) {
+      setIsCardChecked(false);
+      setIsSecondCardChecked(true);
+    } else {
+      setIsSecondCardChecked(value);
+    }
+  };
   return (
     <CardsContainer>
       <CreditCard
         card="visa"
         digits={123132112}
         isChecked={isCardChecked}
-        onChecked={setIsCardChecked}
+        onChecked={handleCheck}
       />
       <CreditCard
         card="mastercard"
         digits={123132112}
         isChecked={isSecondCardChecked}
-        onChecked={setIsSecondCardChecked}
-      />
-      <CreditCard
-        card="visa"
-        digits={123132112}
-        isChecked={isThirdCardChecked}
-        onChecked={setIsThirdCardChecked}
+        onChecked={handleSecondCheck}
       />
     </CardsContainer>
   );
