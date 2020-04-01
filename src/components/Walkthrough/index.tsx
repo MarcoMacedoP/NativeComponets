@@ -34,9 +34,9 @@ const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
       />
       <ControlsContainer>
         <DotsContainer>
-          <Circle isSelected={currentIndex === 0} />
-          <Circle isSelected={currentIndex === 1} />
-          <Circle isSelected={currentIndex === 2} />
+          <Dot isSelected={currentIndex === 0} />
+          <Dot isSelected={currentIndex === 1} />
+          <Dot isSelected={currentIndex === 2} />
         </DotsContainer>
         <Button
           text="Continuar"
@@ -69,7 +69,7 @@ const DotsContainer = styled.View`
   align-items: center;
   margin-bottom: 32px;
 `;
-const Circle = styled.View<{ isSelected: boolean }>`
+export const Dot = styled.View<{ isSelected: boolean }>`
   width: 16px;
   height: 16px;
   border: 2px solid

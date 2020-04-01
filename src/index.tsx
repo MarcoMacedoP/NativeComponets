@@ -9,6 +9,7 @@ import Backup from './components/Backup';
 import InputRounded from './components/InputRounded';
 import CheckedBox from './components/CheckedBox';
 import NumericKeyboard from './components/NumericKeyboard';
+import Carousel from './components/Carousel';
 //drawer
 export * from './components/Drawer';
 
@@ -22,7 +23,7 @@ export * from './components/Cards';
 import styled from './styled-components';
 import defaultTheme from './styled-components/theme';
 export * from './components/Icons';
-import Walkthrough from './components/Walkthrough';
+import Walkthrough, { Dot } from './components/Walkthrough';
 
 export {
   Button,
@@ -40,6 +41,8 @@ export {
   FullscreenModal,
   SwipeModal,
   NumericKeyboard,
+  Carousel,
+  Dot,
   //utils
   styled,
 };
