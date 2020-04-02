@@ -1,5 +1,6 @@
 //components
 import Button from './components/Button';
+import AnimatedButton from './components/Button/AnimatedButton';
 import ThemeProvider from './components/ThemeProvider';
 import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
@@ -10,6 +11,7 @@ import InputRounded from './components/InputRounded';
 import CheckedBox from './components/CheckedBox';
 import NumericKeyboard from './components/NumericKeyboard';
 import Carousel from './components/Carousel';
+
 //drawer
 export * from './components/Drawer';
 
@@ -27,6 +29,7 @@ import Walkthrough, { Dot } from './components/Walkthrough';
 
 export {
   Button,
+  AnimatedButton,
   defaultTheme,
   ThemeProvider,
   Login,

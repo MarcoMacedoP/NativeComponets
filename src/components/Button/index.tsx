@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleProp } from 'react-native';
 import { ButtonStylesType, ButtonText, ButtonTouchable } from './styles';
 import { useThemeColor } from '../../hooks/useThemeColor';
-type ButtonType = React.FC<
-  ButtonStylesType & {
-    text: string;
-    onPress: () => void;
-    style?: StyleProp<any>;
-  }
->;
+
+export type ButtonProps = ButtonStylesType & {
+  text: string;
+  onPress: () => void;
+  style?: StyleProp<any>;
+};
+
+type ButtonType = React.FC<ButtonProps>;
 
 const Button: ButtonType = ({
   onPress,

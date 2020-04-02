@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
-import { CreditCard } from '@lomelidev/react-native-toopago-ui';
+import { CreditCard, AnimatedButton } from '@lomelidev/react-native-toopago-ui';
 import styled from 'styled-components/native';
 
 export default () => {
   const [isCardChecked, setIsCardChecked] = useState(false);
   const [isSecondCardChecked, setIsSecondCardChecked] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const handleButtonPress = () => {
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 2000);
+  };
   const handleCheck = (value: boolean) => {
     if (isSecondCardChecked && value) {
       setIsSecondCardChecked(false);
@@ -35,6 +40,12 @@ export default () => {
         digits={123132112}
         isChecked={isSecondCardChecked}
         onChecked={handleSecondCheck}
+      />
+      <AnimatedButton
+        onPress={handleButtonPress}
+        isLoading={isLoading}
+        text="Aceptar"
+        isPrimary
       />
     </CardsContainer>
   );

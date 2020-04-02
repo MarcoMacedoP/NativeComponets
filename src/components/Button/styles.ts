@@ -10,7 +10,7 @@ export type ButtonStylesType = {
 };
 
 type StyledProps = {
-  color: string | null;
+  color: string | null | any;
 };
 type TouchableProps = StyledProps & {
   isEnabled: boolean;
