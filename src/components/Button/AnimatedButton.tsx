@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, Easing } from 'react-native';
+import { Animated, Easing, ActivityIndicator } from 'react-native';
 import { ButtonTouchable, ButtonText } from './styles';
 import { ButtonProps } from '.';
 import { useThemeColor } from '../../hooks/useThemeColor';
-
 const AnimatedTouchable = Animated.createAnimatedComponent(ButtonTouchable);
 
 type Props = ButtonProps & {
@@ -23,27 +22,34 @@ const AnimatedButton: React.FC<Props> = ({
   ...styleProps
 }) => {
   const [hasPressed, setHasPressed] = useState(false);
+  const [shouldRenderIndicator, setShouldRenderIndicator] = useState(false);
   const [widthAnim] = useState(new Animated.Value(0));
-  const color = useThemeColor(styleProps);
+  const color: any = useThemeColor(styleProps);
   const interpolatedWidth = widthAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [100, 50],
+    outputRange: ['100%', '20%'],
   });
+
   const animatedStyles = {
     marginTop: 16,
     width: interpolatedWidth,
   };
   useEffect(() => {
-    const makeSmall = isLoading && hasPressed;
-    console.log({ makeSmall });
+    const shouldMakeSmall = isLoading && hasPressed;
     Animated.timing(widthAnim, {
-      toValue: makeSmall ? 1 : 0,
-      easing: Easing.linear,
-      duration: 400,
-    }).start();
+      toValue: shouldMakeSmall ? 1 : 0,
+      easing: Easing.sin,
+      duration: 300,
+    }).start(
+      () => shouldMakeSmall && setShouldRenderIndicator(shouldMakeSmall)
+    );
+    if (!shouldMakeSmall) {
+      setShouldRenderIndicator(false);
+    }
   }, [isLoading, hasPressed, widthAnim]);
 
   const handlePress = () => {
+    console.log('lol');
     !hasPressed && setHasPressed(true);
     isLoading ? shouldTriggerOnPressWhileLoading && onPress() : onPress();
   };
@@ -57,9 +63,13 @@ const AnimatedButton: React.FC<Props> = ({
       onPress={handlePress}
       activeOpacity={isEnabled ? 0.6 : 1}
     >
-      <ButtonText color={color} {...styleProps}>
-        {!isLoading && text}
-      </ButtonText>
+      {shouldRenderIndicator ? (
+        <ActivityIndicator size="small" color="#fff" />
+      ) : (
+        <ButtonText color={color} {...styleProps}>
+          {text}
+        </ButtonText>
+      )}
     </AnimatedTouchable>
   );
 };

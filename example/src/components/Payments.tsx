@@ -8,6 +8,7 @@ export default () => {
   const [isSecondCardChecked, setIsSecondCardChecked] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const handleButtonPress = () => {
+    console.log('onPress');
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 2000);
   };
