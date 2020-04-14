@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
-import { CreditCard, AnimatedButton } from '@lomelidev/react-native-toopago-ui';
-import styled from 'styled-components/native';
+import {
+  CreditCard,
+  AnimatedButton,
+  Card,
+  styled,
+  EmailIcon,
+} from '@lomelidev/react-native-toopago-ui';
 
 export default () => {
   const [isCardChecked, setIsCardChecked] = useState(false);
@@ -30,6 +35,14 @@ export default () => {
   };
   return (
     <CardsContainer>
+      <Card
+        isPrimary
+        onPress={() => console.log('')}
+        icon={EmailIcon}
+        content={[
+          { title: 'Example card', desc: 'This is the card description' },
+        ]}
+      />
       <CreditCard
         card="visa"
         digits={123132112}
