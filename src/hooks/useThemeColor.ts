@@ -1,7 +1,5 @@
-import { ThemeType } from '../styled-components/theme';
-import { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
 import { useEffect, useState } from 'react';
+import { useTheme } from './useTheme';
 
 export type StylesType = {
   isPrimary?: boolean;
@@ -20,7 +18,7 @@ export function useThemeColor({
   isSecondaryDark,
   isSecondaryLigth,
 }: StylesType) {
-  const theme: ThemeType = useContext(ThemeContext);
+  const theme = useTheme();
   const [color, setColor] = useState<string | null>('');
 
   useEffect(() => {

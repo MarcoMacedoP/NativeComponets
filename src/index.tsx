@@ -23,9 +23,12 @@ import SwipeModal from './components/Modals/SwipeModal';
 export * from './components/Cards';
 //utils
 import styled from './styled-components';
-import defaultTheme from './styled-components/theme';
+import defaultTheme, { ThemeType } from './styled-components/theme';
 export * from './components/Icons';
 import Walkthrough, { Dot } from './components/Walkthrough';
+//hooks
+import { useTheme } from './hooks/useTheme';
+import { useThemeColor } from './hooks/useThemeColor';
 
 export {
   Button,
@@ -46,6 +49,10 @@ export {
   NumericKeyboard,
   Carousel,
   Dot,
+  //hooks
+  useTheme,
+  useThemeColor,
   //utils
   styled,
+  ThemeType,
 };
