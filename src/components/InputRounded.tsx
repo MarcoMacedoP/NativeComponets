@@ -11,7 +11,7 @@ import styled from '../styled-components';
 import { ThemeContext } from 'styled-components';
 import { ThemeType } from 'src/styled-components/theme';
 
-const AnimatedInput = Animated.createAnimatedComponent(TextInput);
+const AnimatedInput: any = Animated.createAnimatedComponent(TextInput);
 
 type InputType = React.FC<TextInputProps & { hasCenterText?: boolean }>;
 
