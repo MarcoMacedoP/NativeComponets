@@ -16,13 +16,13 @@ const FormFooter: FormFooterType = props => (
 );
 
 const Footer = styled.View`
-  margin-top: 24px;
+  margin: 24px 0 8px 0;
   width: 100%;
   padding: 2.5%;
   flex: 1;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
   background-color: ${p => p.theme.background};
 `;
 const Link = styled(ButtonBase)`

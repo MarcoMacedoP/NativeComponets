@@ -11,6 +11,14 @@ type SignupType = React.FC<{
 const Signup: SignupType = props => (
   <FormContainer>
     <BaseForm
+      footer={() => (
+        <FormFooter
+          onLeftButtonPress={props.onLoginPress}
+          leftButtonText="Inicia sesión"
+          onRigthButtonPress={props.onBackupAccount}
+          rigthButtonText="Recupera tu cuenta"
+        />
+      )}
       primaryButtonText="Crear cuenta"
       onPrimaryButtonPress={props.onCreateAccount}
       onSecondaryButtonPress={props.onCreateWithFacebook}
@@ -18,12 +26,6 @@ const Signup: SignupType = props => (
     >
       {props.children}
     </BaseForm>
-    <FormFooter
-      onLeftButtonPress={props.onLoginPress}
-      leftButtonText="Inicia sesión"
-      onRigthButtonPress={props.onBackupAccount}
-      rigthButtonText="Recupera tu cuenta"
-    />
   </FormContainer>
 );
 

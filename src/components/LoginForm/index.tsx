@@ -20,9 +20,9 @@ const LoginForm: LoginFormType = props => {
       </Header>
       <BaseForm
         isLoading={props.isLoading}
-        primaryButtonText="Log in"
+        primaryButtonText="Inciar sesión"
         onPrimaryButtonPress={props.onLogin}
-        secondaryButtonText="Log in with facebook"
+        secondaryButtonText="Iniciar sesión con Facebook"
         onSecondaryButtonPress={props.onFacebookLogin}
         footer={() => (
           <FormFooter
