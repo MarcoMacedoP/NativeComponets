@@ -58,25 +58,26 @@ type StyledProps = StylesType & {
 };
 
 const Touchable = styled.TouchableOpacity`
+  elevation: 6;
   flex-direction: row;
   width: 100%;
   min-height: 100px;
-  height: 100%;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 3px 5px ${props => props.theme.gray};
-  elevation: 1;
+  shadow-opacity: 0.27;
+  shadow-radius: 4.65px;
+  shadow-color: #000;
+  shadow-offset: 0px 3px;
   border-radius: ${props => props.theme.borderRadius}px;
   background-color: ${props => props.theme.background};
 `;
 const IconBox = styled.View<StyledProps>`
-  flex-direction: row;
+  border-top-left-radius: ${props => props.theme.borderRadius}px;
+  border-bottom-left-radius: ${props => props.theme.borderRadius}px;
   flex: 1;
   height: 100px;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: ${props => props.theme.borderRadius}px;
-  border-top-right-radius: ${props => props.theme.borderRadius}px;
   background-color: ${props => (props.color ? props.color : 'transparent')};
 `;
 const TextContent = styled.View`
@@ -86,28 +87,22 @@ const TextContent = styled.View`
   height: 100px;
   align-items: flex-start;
   justify-content: center;
-  border-top-left-radius: ${props => props.theme.borderRadius}px;
-  border-bottom-left-radius: ${props => props.theme.borderRadius}px;
-  background-color: ${props => props.theme.background};
 `;
 const TextBox = styled.View`
   flex: 1;
   height: 100px;
   align-items: flex-start;
   justify-content: center;
-  border-top-left-radius: ${props => props.theme.borderRadius}px;
-  border-bottom-left-radius: ${props => props.theme.borderRadius}px;
-  background-color: ${props => props.theme.background};
+  border-top-right-radius: ${props => props.theme.borderRadius}px;
+  border-bottom-right-radius: ${props => props.theme.borderRadius}px;
 `;
 const Text = styled.Text`
   color: ${props => props.theme.lightGray};
-  font-weight: 200px;
-  font-size: 14px;
-`;
-const TextSecondary = styled.Text<StyledProps>`
-  background-color: ${props => (props.color ? props.color : 'transparent')};
-  font-weight: 200px;
+  font-weight: 200;
   font-size: 16px;
+`;
+const TextSecondary = styled(Text)<StyledProps>`
+  color: ${props => (props.color ? props.color : 'transparent')};
   margin-top: 8px;
 `;
 export default Card as CardType;

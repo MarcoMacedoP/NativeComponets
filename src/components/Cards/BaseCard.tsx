@@ -76,7 +76,7 @@ const TextBox = styled.View<StyledProps>`
 `;
 const Text = styled.Text<StyledProps>`
   color: ${props => props.theme.grayLigth};
-  font-weight: 200px;
+  font-weight: 200;
   font-size: 14px;
 `;
 export default BaseCard as BaseCardType;
