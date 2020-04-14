@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '../../styled-components';
 import ButtonBase from '../Button';
 
-type FormFooterType = React.FC<{
+export type FormFooterType = React.FC<{
   leftButtonText: string;
   rigthButtonText: string;
   onLeftButtonPress: () => void;
@@ -16,9 +16,10 @@ const FormFooter: FormFooterType = props => (
 );
 
 const Footer = styled.View`
+  margin-top: 24px;
   width: 100%;
   padding: 2.5%;
-  flex: 0.5;
+  flex: 1;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-end;

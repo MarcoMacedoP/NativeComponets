@@ -8,6 +8,7 @@ type LoginFormType = React.FC<{
   onFacebookLogin: () => void;
   onCreateAccount: () => void;
   onBackupAccount: () => void;
+  isLoading?: boolean;
 }>;
 
 const LoginForm: LoginFormType = props => {
@@ -18,34 +19,37 @@ const LoginForm: LoginFormType = props => {
         <WalletIcon source={walletIcon} />
       </Header>
       <BaseForm
+        isLoading={props.isLoading}
         primaryButtonText="Log in"
         onPrimaryButtonPress={props.onLogin}
         secondaryButtonText="Log in with facebook"
         onSecondaryButtonPress={props.onFacebookLogin}
+        footer={() => (
+          <FormFooter
+            onLeftButtonPress={props.onCreateAccount}
+            onRigthButtonPress={props.onBackupAccount}
+            leftButtonText="Crea tu cuenta"
+            rigthButtonText="Recupera tu cuenta"
+          />
+        )}
       >
         {props.children}
       </BaseForm>
-      <FormFooter
-        onLeftButtonPress={props.onCreateAccount}
-        onRigthButtonPress={props.onBackupAccount}
-        leftButtonText="Crea tu cuenta"
-        rigthButtonText="Recupera tu cuenta"
-      />
     </FormContainer>
   );
 };
 
 const Header = styled.View`
   width: 100%;
-  flex: 3;
+  flex: 1;
   align-items: center;
-  z-index: 1;
+  justify-content: center;
+  z-index: 2;
+  min-height: 100px;
 `;
 const WalletIcon = styled.Image`
-  height: 120%;
+  flex: 1;
   width: 100%;
-  position: relative;
-  bottom: -15%;
   resize-mode: contain;
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '../../styled-components';
-import ButtonBase from '../Button';
+import Button from '../Button/AnimatedButton';
 import ToopagoIconBase from '../Icons/ToopagoIcon';
 
 type BaseFormType = React.FC<{
@@ -8,6 +8,8 @@ type BaseFormType = React.FC<{
   primaryButtonText: string;
   onSecondaryButtonPress: () => void;
   secondaryButtonText: string;
+  isLoading?: boolean;
+  footer: React.FC<{}>;
 }>;
 
 const BaseForm: BaseFormType = props => (
@@ -17,6 +19,7 @@ const BaseForm: BaseFormType = props => (
     {props.children}
 
     <Button
+      isLoading={props.isLoading}
       text={props.primaryButtonText}
       isPrimary
       onPress={props.onPrimaryButtonPress}
@@ -28,17 +31,21 @@ const BaseForm: BaseFormType = props => (
     >
       <FacebookIcon source={require('../../assets/icons/facebook.png')} />
     </Button>
+    {props.footer({})}
   </Form>
 );
-const Form = styled.View`
+const Form = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 16,
+  },
+}))`
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   background-color: ${props => props.theme.background};
   width: 100%;
-  display: flex;
-  flex: 5;
-  align-items: center;
-  justify-content: flex-start;
+  flex: 4;
   padding: 16px 16px 0;
 `;
 const FacebookIcon = styled.Image`
@@ -47,14 +54,11 @@ const FacebookIcon = styled.Image`
   resize-mode: contain;
   margin-right: 8px;
 `;
-
-const Button = styled(ButtonBase)`
-  margin-bottom: 16px;
-`;
 const ToopagoIcon = styled(ToopagoIconBase)`
   margin: 16px 0;
   width: 60%;
-  flex: 0.5;
   max-width: 300px;
+  min-height: 40px;
 `;
+
 export default BaseForm;

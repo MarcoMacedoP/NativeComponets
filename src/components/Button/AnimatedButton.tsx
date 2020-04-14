@@ -6,7 +6,7 @@ import { useThemeColor } from '../../hooks/useThemeColor';
 const AnimatedTouchable = Animated.createAnimatedComponent(ButtonTouchable);
 
 type Props = ButtonProps & {
-  isLoading: boolean;
+  isLoading?: boolean;
   shouldTriggerOnPressWhileLoading?: boolean; //disable onPress function if loading
 };
 /**

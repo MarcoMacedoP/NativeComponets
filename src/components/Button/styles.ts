@@ -20,7 +20,7 @@ export const ButtonTouchable = styled.TouchableOpacity<TouchableProps>`
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: 42px;
   border-radius: ${props => props.theme.borderRadius}px;
   background-color: ${props =>
     props.isEnabled
