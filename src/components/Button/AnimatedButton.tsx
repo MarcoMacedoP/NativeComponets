@@ -4,7 +4,8 @@ import { ButtonTouchable, ButtonText } from './styles';
 import { ButtonProps } from '.';
 import { useThemeColor } from '../../hooks/useThemeColor';
 import { ButtonContainer } from './styles';
-const AnimatedTouchable = Animated.createAnimatedComponent(ButtonTouchable);
+
+const AnimatedContainer = Animated.createAnimatedComponent(ButtonContainer);
 
 type Props = ButtonProps & {
   isLoading?: boolean;
@@ -23,7 +24,9 @@ const AnimatedButton: React.FC<Props> = ({
   ...styleProps
 }) => {
   const [hasPressed, setHasPressed] = useState(false);
-  const [shouldRenderIndicator, setShouldRenderIndicator] = useState(false);
+  const [shouldRenderIndicator, setShouldRenderIndicator] = useState<
+    boolean | undefined
+  >(false);
   const [widthAnim] = useState(new Animated.Value(0));
   const color: any = useThemeColor(styleProps);
   const interpolatedWidth = widthAnim.interpolate({
@@ -41,11 +44,9 @@ const AnimatedButton: React.FC<Props> = ({
       toValue: shouldMakeSmall ? 1 : 0,
       easing: Easing.sin,
       duration: 300,
-    }).start(
-      () => shouldMakeSmall && setShouldRenderIndicator(shouldMakeSmall)
-    );
-    if (!shouldMakeSmall) {
-      setShouldRenderIndicator(false);
+    }).start(() => !shouldMakeSmall && setShouldRenderIndicator(false));
+    if (shouldMakeSmall) {
+      setShouldRenderIndicator(true);
     }
   }, [isLoading, hasPressed, widthAnim]);
 
@@ -55,10 +56,9 @@ const AnimatedButton: React.FC<Props> = ({
   };
 
   return (
-    <ButtonContainer style={[style]}>
-      <AnimatedTouchable
+    <AnimatedContainer style={[style, animatedStyles]}>
+      <ButtonTouchable
         color={color}
-        style={[animatedStyles]}
         {...styleProps}
         isEnabled={isEnabled}
         onPress={handlePress}
@@ -70,8 +70,8 @@ const AnimatedButton: React.FC<Props> = ({
             {text}
           </ButtonText>
         )}
-      </AnimatedTouchable>
-    </ButtonContainer>
+      </ButtonTouchable>
+    </AnimatedContainer>
   );
 };
 export default AnimatedButton as React.FC<Props>;

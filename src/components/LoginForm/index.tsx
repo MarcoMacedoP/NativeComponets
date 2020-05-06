@@ -10,13 +10,13 @@ type LoginFormType = React.FC<{
   onBackupAccount: () => void;
   isLoading?: boolean;
 }>;
+const walletIcon = require('../../assets/icons/terminal.png');
 
 const LoginForm: LoginFormType = props => {
-  const walletIcon = require('../../assets/icons/terminal.png');
   return (
     <FormContainer>
       <Header>
-        <WalletIcon source={walletIcon} />
+        <WalletIcon source={walletIcon} resizeMode="contain" />
       </Header>
       <BaseForm
         isLoading={props.isLoading}
@@ -46,11 +46,14 @@ const Header = styled.View`
   justify-content: center;
   z-index: 2;
   min-height: 100px;
+  position: relative;
 `;
 const WalletIcon = styled.Image`
   flex: 1;
   width: 100%;
-  resize-mode: contain;
+  max-height: 30%;
+  position: absolute;
+  bottom: -64px;
 `;
 
 export default LoginForm as LoginFormType;

@@ -20,6 +20,7 @@ type TouchableProps = StyledProps & {
 export const ButtonContainer = styled.View`
   width: 100%;
   height: 42px;
+  min-height: 42px;
   overflow: hidden;
   border-radius: ${props => props.theme.borderRadius}px;
 `;

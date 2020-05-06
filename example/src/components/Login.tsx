@@ -10,14 +10,19 @@ import styled from 'styled-components/native';
 
 export default function App() {
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState('');
   const emptyVoid = () => {
-    console.log('hey');
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
   return (
     <ThemeProvider>
       <Login
         onLogin={emptyVoid}
+        isLoading={isLoading}
         onFacebookLogin={emptyVoid}
         onBackupAccount={emptyVoid}
         onCreateAccount={emptyVoid}

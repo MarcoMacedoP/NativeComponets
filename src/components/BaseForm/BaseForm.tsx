@@ -9,6 +9,7 @@ type BaseFormType = React.FC<{
   onSecondaryButtonPress: () => void;
   secondaryButtonText: string;
   isLoading?: boolean;
+  isLoadingFacebook?: boolean;
   footer: React.FC<{}>;
 }>;
 
@@ -17,20 +18,22 @@ const BaseForm: BaseFormType = props => (
     <ToopagoIcon />
 
     {props.children}
-
-    <Button
-      isLoading={props.isLoading}
-      text={props.primaryButtonText}
-      isPrimary
-      onPress={props.onPrimaryButtonPress}
-    />
-    <Button
-      text={props.secondaryButtonText}
-      isSecondaryDark
-      onPress={props.onSecondaryButtonPress}
-    >
-      <FacebookIcon source={require('../../assets/icons/facebook.png')} />
-    </Button>
+    <ButtonsContainer>
+      <Button
+        isLoading={props.isLoading}
+        text={props.primaryButtonText}
+        isPrimary
+        onPress={props.onPrimaryButtonPress}
+      />
+      <Button
+        text={props.secondaryButtonText}
+        isSecondaryDark
+        isLoading={props.isLoadingFacebook}
+        onPress={props.onSecondaryButtonPress}
+      >
+        <FacebookIcon source={require('../../assets/icons/facebook.png')} />
+      </Button>
+    </ButtonsContainer>
     {props.footer({})}
   </Form>
 );
@@ -59,6 +62,11 @@ const ToopagoIcon = styled(ToopagoIconBase)`
   width: 60%;
   max-width: 300px;
   min-height: 40px;
+`;
+
+const ButtonsContainer = styled.View`
+  width: 100%;
+  align-items: center;
 `;
 
 export default BaseForm;
