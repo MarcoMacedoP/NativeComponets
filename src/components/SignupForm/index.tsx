@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormFooter, BaseForm, FormContainer } from '../BaseForm';
-import styled from '../../styled-components';
-import { Platform } from 'react-native';
+
 type SignupType = React.FC<{
   onLoginPress: () => void;
   onBackupAccount: () => void;
@@ -11,9 +10,6 @@ type SignupType = React.FC<{
 
 const Signup: SignupType = props => (
   <>
-    <StatusBar
-      barStyle={Platform.OS === 'android' ? 'light-content' : 'dark-content'}
-    />
     <FormContainer>
       <BaseForm
         footer={() => (
@@ -34,11 +30,5 @@ const Signup: SignupType = props => (
     </FormContainer>
   </>
 );
-const Container = styled.SafeAreaView`
-  flex: 1;
-  background-color: ${props => props.theme.background};
-`;
-const StatusBar = styled.StatusBar.attrs(({ theme }) => ({
-  backgroundColor: theme.primary,
-}))``;
+
 export default Signup as SignupType;

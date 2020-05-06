@@ -4,7 +4,6 @@ import { KeyIcon, CrossIcon, EmailIcon } from '../Icons';
 import Button from '../Button';
 import InputRounded from '../InputRounded';
 import SuccessModal, { SuccessModalProps } from './SuccessModal';
-import { StatusBar } from 'react-native';
 type Props = SuccessModalProps & {
   onSubmit: () => void;
   /** The value of the email input*/
@@ -21,7 +20,6 @@ type BackupType = React.FC<Props>;
 const Backup: BackupType = ({ email = '', ...props }) => {
   return (
     <>
-      <StatusBar barStyle="light-content" />
       <Container>
         <Header>
           <KeyIcon />

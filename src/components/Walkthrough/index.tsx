@@ -2,7 +2,7 @@ import Item from './Item';
 import React from 'react';
 import Carrousel from '../Carousel';
 import styled from '../../styled-components';
-import { Dimensions, StatusBar } from 'react-native';
+import { Dimensions } from 'react-native';
 import Button from '../Button';
 export type WalkthroughItemData = {
   image: any;
@@ -23,7 +23,6 @@ const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
   }
   return (
     <Container>
-      <StatusBar barStyle="dark-content" />
       <StyledCarrousel
         onIndexChange={setCurrentIndex}
         containerWidth={width}

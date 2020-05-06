@@ -47,8 +47,6 @@ const Container = styled.View`
   width: 100%;
   padding: 16px 16px 0;
   background-color: ${props => props.theme.background};
-  /* border-top-left-radius: 24px;
-  border-top-right-radius: 24px; */
   border-radius: 24px;
 `;
 const Form = styled.ScrollView.attrs(() => ({

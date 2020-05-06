@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from '../../styled-components';
 import { CirlcesIcon } from '../Icons';
-import { StatusBar } from 'react-native';
 
 import { DrawerHeaderProps } from './CustomDrawerContent';
 type DrawerHeaderType = React.FC<DrawerHeaderProps>;
 
 const NavbarHeader: DrawerHeaderType = props => {
-  StatusBar.setBarStyle('light-content');
   return (
     <SafeAreaView>
-      <StatusBar barStyle="light-content" />
       <Container>
         <Image source={props.userImageSource} />
         <Username>{props.userName}</Username>

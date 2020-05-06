@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, StatusBar } from 'react-native';
+import { StyleProp, StyleSheet } from 'react-native';
 import styled from '../../styled-components';
 import { useThemeColor, StylesType } from '../../hooks/useThemeColor';
 import Modal from 'react-native-modal';
@@ -39,7 +39,6 @@ const FullscreenModal: FullscreenType = ({
       onModalHide={onClose}
       swipeDirection={['down']}
     >
-      <StatusBar backgroundColor={'transparent'} barStyle="light-content" />
       <Container style={style}>
         <Header color={color}>
           <CloseIconContainer onPress={onClose}>

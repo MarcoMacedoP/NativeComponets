@@ -1,5 +1,4 @@
-export type ThemeType = {
-  borderRadius: number;
+export type ThemeColors = {
   primary: string;
   secondary: string;
   secondaryLigth: string;
@@ -12,7 +11,9 @@ export type ThemeType = {
   grayLigth: string;
   lightGray: string;
 };
-
+export type ThemeType = ThemeColors & {
+  borderRadius: number;
+};
 const defaultTheme: ThemeType = {
   borderRadius: 18,
   primary: '#ef7d54',

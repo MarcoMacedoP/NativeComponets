@@ -4,7 +4,7 @@ import { ThemeType } from '../../styled-components/theme';
 
 import { StyleProp, Animated, Easing } from 'react-native';
 import Modal from 'react-native-modal';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { ThemeContext } from 'styled-components';
 
 /**
@@ -63,7 +63,6 @@ const SwipeModal: ModalType = ({ onClose, isShowed, children, style }) => {
   }
   return (
     <>
-      <StatusBar backgroundColor={'#000000'} barStyle="light-content" />
       <Modal
         style={styles.modal}
         isVisible={isShowed}
