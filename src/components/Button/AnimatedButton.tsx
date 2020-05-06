@@ -21,6 +21,7 @@ const AnimatedButton: React.FC<Props> = ({
   text,
   style,
   isEnabled = true,
+  children,
   ...styleProps
 }) => {
   const [hasPressed, setHasPressed] = useState(false);
@@ -66,9 +67,12 @@ const AnimatedButton: React.FC<Props> = ({
         {shouldRenderIndicator ? (
           <ActivityIndicator size="small" color="#fff" />
         ) : (
-          <ButtonText color={color} {...styleProps}>
-            {text}
-          </ButtonText>
+          <>
+            {children}
+            <ButtonText color={color} {...styleProps}>
+              {text}
+            </ButtonText>
+          </>
         )}
       </ButtonTouchable>
     </AnimatedContainer>

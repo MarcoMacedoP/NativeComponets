@@ -15,15 +15,13 @@ const FormFooter: FormFooterType = props => (
   </Footer>
 );
 
-const Footer = styled.View`
-  margin: 24px 0 8px 0;
+const Footer = styled.SafeAreaView`
   width: 100%;
-  padding: 2.5%;
-  flex: 1;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: ${p => p.theme.background};
+  flex: 0.5;
+  margin-bottom: 8px;
 `;
 const Link = styled(ButtonBase)`
   flex: 1;

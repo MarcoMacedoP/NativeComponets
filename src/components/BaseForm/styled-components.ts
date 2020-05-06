@@ -1,6 +1,6 @@
 import styled from '../../styled-components';
 
-export const FormContainer = styled.View`
+export const FormContainer = styled.SafeAreaView`
   flex: 1;
   width: 100%;
   align-items: center;
