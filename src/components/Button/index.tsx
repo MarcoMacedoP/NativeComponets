@@ -1,6 +1,11 @@
 import React from 'react';
 import { StyleProp } from 'react-native';
-import { ButtonStylesType, ButtonText, ButtonTouchable } from './styles';
+import {
+  ButtonStylesType,
+  ButtonText,
+  ButtonTouchable,
+  ButtonContainer,
+} from './styles';
 import { useThemeColor } from '../../hooks/useThemeColor';
 
 export type ButtonProps = ButtonStylesType & {
@@ -25,19 +30,19 @@ const Button: ButtonType = ({
   const handlePress = () => isEnabled && onPress();
 
   return (
-    <ButtonTouchable
-      color={color}
-      style={[style]}
-      {...styleProps}
-      isEnabled={isEnabled}
-      onPress={handlePress}
-      activeOpacity={isEnabled ? 0.6 : 1}
-    >
-      {children && children}
-      <ButtonText color={color} {...styleProps}>
-        {text}
-      </ButtonText>
-    </ButtonTouchable>
+    <ButtonContainer style={[style]}>
+      <ButtonTouchable
+        color={color}
+        {...styleProps}
+        isEnabled={isEnabled}
+        onPress={handlePress}
+      >
+        {children && children}
+        <ButtonText color={color} {...styleProps}>
+          {text}
+        </ButtonText>
+      </ButtonTouchable>
+    </ButtonContainer>
   );
 };
 

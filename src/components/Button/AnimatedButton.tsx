@@ -3,6 +3,7 @@ import { Animated, Easing, ActivityIndicator } from 'react-native';
 import { ButtonTouchable, ButtonText } from './styles';
 import { ButtonProps } from '.';
 import { useThemeColor } from '../../hooks/useThemeColor';
+import { ButtonContainer } from './styles';
 const AnimatedTouchable = Animated.createAnimatedComponent(ButtonTouchable);
 
 type Props = ButtonProps & {
@@ -49,28 +50,28 @@ const AnimatedButton: React.FC<Props> = ({
   }, [isLoading, hasPressed, widthAnim]);
 
   const handlePress = () => {
-    console.log('lol');
     !hasPressed && setHasPressed(true);
     isLoading ? shouldTriggerOnPressWhileLoading && onPress() : onPress();
   };
 
   return (
-    <AnimatedTouchable
-      color={color}
-      style={[style, animatedStyles]}
-      {...styleProps}
-      isEnabled={isEnabled}
-      onPress={handlePress}
-      activeOpacity={isEnabled ? 0.6 : 1}
-    >
-      {shouldRenderIndicator ? (
-        <ActivityIndicator size="small" color="#fff" />
-      ) : (
-        <ButtonText color={color} {...styleProps}>
-          {text}
-        </ButtonText>
-      )}
-    </AnimatedTouchable>
+    <ButtonContainer style={[style]}>
+      <AnimatedTouchable
+        color={color}
+        style={[animatedStyles]}
+        {...styleProps}
+        isEnabled={isEnabled}
+        onPress={handlePress}
+      >
+        {shouldRenderIndicator ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <ButtonText color={color} {...styleProps}>
+            {text}
+          </ButtonText>
+        )}
+      </AnimatedTouchable>
+    </ButtonContainer>
   );
 };
 export default AnimatedButton as React.FC<Props>;
