@@ -8,7 +8,7 @@ const WalkthroughItem: WalkthroughItemType = props => {
   return (
     <Container>
       <Header>
-        <Image source={props.image} />
+        <Image source={props.image} resizeMode="contain" />
       </Header>
       <Content>
         <Title> {props.title}</Title>

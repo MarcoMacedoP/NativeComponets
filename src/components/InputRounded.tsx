@@ -16,7 +16,7 @@ const AnimatedInput: any = Animated.createAnimatedComponent(TextInput);
 type InputType = React.FC<TextInputProps & { hasCenterText?: boolean }>;
 
 const InputRounded: InputType = React.forwardRef(
-  ({ children, style, ...props }, ref: any) => {
+  ({ children, style, hasCenterText, ...props }, ref: any) => {
     const [animatedValue] = useState(new Animated.Value(1));
     const theme: ThemeType = useContext(ThemeContext);
     const interpolatedColor = animatedValue.interpolate({
@@ -60,6 +60,7 @@ const InputRounded: InputType = React.forwardRef(
         <StyledInput
           {...props}
           ref={ref}
+          hasCenterText={hasCenterText}
           maxFontSizeMultiplier={0}
           style={{ color: interpolatedColor }}
           onFocus={handleFocus}
@@ -86,8 +87,8 @@ const StyledInput = styled(AnimatedInput)<{ hasCenterText?: boolean }>`
   text-align: ${props => (props.hasCenterText ? 'center' : 'left')};
   color: ${props => props.theme.gray};
   width: 100%;
-  padding: 8px 0 8px 8px;
   min-height: 36px;
+  padding: ${props => (props.hasCenterText ? '0' : '8px 0 8px 8px')};
   text-transform: none;
 `;
 
