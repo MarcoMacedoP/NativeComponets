@@ -16,7 +16,7 @@ const Notifications: NotificationsIconType = ({
 }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Svg width="22" height="22" viewBox="0 0 40.25 39.162" style={style}>
+      <Svg width="26" height="26" viewBox="0 0 40.25 39.162" style={style}>
         <G id="notifications" transform="translate(-4124.75 -773.69)">
           <G id="icon" transform="translate(4124.75 773.69)">
             <G id="bell">

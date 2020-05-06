@@ -4,8 +4,12 @@ import {
   EmailIcon,
   LockIcon,
   CustomDrawerContent,
+  useTheme,
+  DrawerNotifications,
+  DrawerMenu,
 } from '@lomelidev/react-native-toopago-ui';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Payments from './components/Payments';
 import styled from 'styled-components/native';
@@ -17,6 +21,7 @@ import Keyboard from './components/Keyboard';
 import SignupScreen from './components/Signup';
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -24,7 +29,7 @@ export default function App() {
       <NavigationContainer>
         <Container>
           <Drawer.Navigator
-            initialRouteName="Payments"
+            initialRouteName="Stack"
             drawerContent={props => (
               <CustomDrawerContent
                 userImageSource={require('./assets/profile-image.png')}
@@ -33,6 +38,7 @@ export default function App() {
               />
             )}
           >
+            <Drawer.Screen name="Stack" component={StackRouter} />
             <Drawer.Screen
               name="Perfil"
               component={ProfileScreen}
@@ -58,6 +64,27 @@ export default function App() {
     </ThemeProvider>
   );
 }
+
+const StackRouter = ({ navigation }: { navigation: any }) => {
+  const theme = useTheme();
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: theme.primary,
+        },
+        headerTintColor: theme.background,
+        headerRight: () => (
+          <DrawerNotifications onPress={() => {}} notifications={2} />
+        ),
+        headerLeft: () => <DrawerMenu onPress={navigation.openDrawer} />,
+      }}
+    >
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Keyboard" component={Keyboard} />
+    </Stack.Navigator>
+  );
+};
 
 const Container = styled.View`
   flex: 1;

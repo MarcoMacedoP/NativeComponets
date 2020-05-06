@@ -34,7 +34,7 @@ target 'ToopagoUiExample' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-toopago-ui', :path => '../..'
+  pod 'lomelidev-react-native-toopago-ui', :path => '../..'
 
   use_native_modules!
 end

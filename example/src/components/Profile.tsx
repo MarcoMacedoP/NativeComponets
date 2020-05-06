@@ -1,14 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { Text, View, Dimensions, Image } from 'react-native';
-import {
-  DrawerNavbar,
-  Button,
-  SwipeModal,
-  Card,
-} from '@lomelidev/react-native-toopago-ui';
+import { Button, SwipeModal, Card } from '@lomelidev/react-native-toopago-ui';
+
 export default ({ navigation }: { navigation: any }) => {
-  const toggleDrawer = () => navigation.toggleDrawer();
   const [isModalShowed, setIsModalShowed] = useState(false);
   const toggleModal = () => setIsModalShowed(!isModalShowed);
   const closeModal = () => setIsModalShowed(false);
@@ -20,13 +15,6 @@ export default ({ navigation }: { navigation: any }) => {
         width: Dimensions.get('screen').width,
       }}
     >
-      <DrawerNavbar
-        title="Hola fernanda"
-        notifications={2}
-        onMenuPress={toggleDrawer}
-        onNotificationPress={toggleDrawer}
-      />
-
       <View
         style={{
           padding: 16,
@@ -52,6 +40,12 @@ export default ({ navigation }: { navigation: any }) => {
         </View>
 
         <Button text="Abir un modal" onPress={toggleModal} isPrimary />
+        <Button
+          text="Ir a otra pantalla"
+          onPress={() => navigation.navigate('Keyboard')}
+          isSecondary
+          style={{ marginTop: 16 }}
+        />
       </View>
       <SwipeModal isShowed={isModalShowed} onClose={closeModal}>
         <Text>Este es un modal</Text>
