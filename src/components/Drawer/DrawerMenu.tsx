@@ -3,6 +3,7 @@ import { Svg, G, Path } from 'react-native-svg';
 import { StyleProp, ViewStyle } from 'react-native';
 import styled from '../../styled-components';
 import { Touchable } from '../Touchable';
+
 type DrawerDrawerMenuType = React.FC<{
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
@@ -34,7 +35,6 @@ export const DrawerMenu: DrawerDrawerMenuType = props => (
 );
 const Container = styled(Touchable)`
   padding: 0 8px;
-  border: 1px solid red;
   justify-content: center;
   height: 100%;
 `;

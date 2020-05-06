@@ -65,9 +65,14 @@ export default function App() {
   );
 }
 
+/**
+ * Example of using the stack router to render the toopago default Navbar.
+ *
+ */
 const StackRouter = ({ navigation }: { navigation: any }) => {
   const theme = useTheme();
   return (
+    // sets the header rigth to display notifications.
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
@@ -77,10 +82,18 @@ const StackRouter = ({ navigation }: { navigation: any }) => {
         headerRight: () => (
           <DrawerNotifications onPress={() => {}} notifications={2} />
         ),
-        headerLeft: () => <DrawerMenu onPress={navigation.openDrawer} />,
       }}
     >
-      <Stack.Screen name="Profile" component={ProfileScreen} />
+      {/* in the screens that need the drawer button add the option, don't do it on Navigator screen options
+        becase will override the back button.
+      */}
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerLeft: () => <DrawerMenu onPress={navigation.openDrawer} />,
+        }}
+      />
       <Stack.Screen name="Keyboard" component={Keyboard} />
     </Stack.Navigator>
   );
