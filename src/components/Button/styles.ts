@@ -1,21 +1,5 @@
 import styled from '../../styled-components';
-import { Touchable } from '../Touchable';
-
-export type ButtonStylesType = {
-  isPrimary?: boolean;
-  isOutline?: boolean;
-  isSecondary?: boolean;
-  isEnabled?: boolean;
-  isSecondaryLigth?: boolean;
-  isSecondaryDark?: boolean;
-};
-
-type StyledProps = {
-  color: string | null | any;
-};
-type TouchableProps = StyledProps & {
-  isEnabled: boolean;
-};
+import { TouchableProps, StyledProps } from './types';
 
 export const ButtonContainer = styled.View`
   width: 100%;
@@ -25,8 +9,7 @@ export const ButtonContainer = styled.View`
   border-radius: ${props => props.theme.borderRadius}px;
 `;
 
-// eslint-disable-next-line prettier/prettier
-export const ButtonTouchable = styled(Touchable) <TouchableProps>`
+export const ButtonTouchable = styled.TouchableOpacity<TouchableProps>`
   flex-direction: row;
   overflow: hidden;
   width: 100%;

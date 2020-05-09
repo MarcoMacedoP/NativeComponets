@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Animated, Easing, ActivityIndicator } from 'react-native';
 import { ButtonTouchable, ButtonText } from './styles';
-import { ButtonProps } from '.';
+import { ButtonProps } from './types';
 import { useThemeColor } from '../../hooks/useThemeColor';
 import { ButtonContainer } from './styles';
 

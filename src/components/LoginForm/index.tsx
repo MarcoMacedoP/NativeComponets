@@ -9,6 +9,7 @@ type LoginFormType = React.FC<{
   onCreateAccount: () => void;
   onBackupAccount: () => void;
   isLoading?: boolean;
+  isFacebookLoading?: boolean;
 }>;
 const walletIcon = require('../../assets/icons/terminal.png');
 
@@ -20,6 +21,7 @@ const LoginForm: LoginFormType = props => {
       </Header>
       <BaseForm
         isLoading={props.isLoading}
+        isLoadingFacebook={props.isFacebookLoading}
         primaryButtonText="Inciar sesión"
         onPrimaryButtonPress={props.onLogin}
         secondaryButtonText="Iniciar sesión con Facebook"

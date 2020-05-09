@@ -2,6 +2,7 @@ import React from 'react';
 import { FormFooter, BaseForm, FormContainer } from '../BaseForm';
 
 type SignupType = React.FC<{
+  isFacebookLoading?: boolean;
   onLoginPress: () => void;
   onBackupAccount: () => void;
   onCreateAccount: () => void;
@@ -12,6 +13,7 @@ const Signup: SignupType = props => (
   <>
     <FormContainer>
       <BaseForm
+        isLoadingFacebook={props.isFacebookLoading}
         footer={() => (
           <FormFooter
             onLeftButtonPress={props.onLoginPress}
