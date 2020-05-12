@@ -25,12 +25,12 @@ const BaseForm: BaseFormType = props => (
         <Button
           isLoading={props.isLoading}
           text={props.primaryButtonText}
-          isPrimary
           onPress={props.onPrimaryButtonPress}
+          type="primary"
         />
         <Button
           text={props.secondaryButtonText}
-          isSecondaryDark
+          type="secondaryDark"
           isLoading={props.isLoadingFacebook}
           onPress={props.onSecondaryButtonPress}
         >

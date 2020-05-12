@@ -1,36 +1,31 @@
 import React from 'react';
-import { ButtonText, ButtonTouchable, ButtonContainer } from './styles';
-import { useThemeColor } from '../../hooks/useThemeColor';
+import { TouchableOpacity, Text } from 'react-native';
 import { ButtonType } from './types';
+import { styles } from './styles';
+import { useButtonStyles } from './useButtonStyles';
 
 const Button: ButtonType = ({
   onPress,
   text,
   children,
   style,
-  isEnabled = true,
-  ...styleProps
+  type,
+  ...buttonProps
 }) => {
-  const color = useThemeColor(styleProps);
+  const generatedStyles = useButtonStyles(type);
 
-  //handlers
-  const handlePress = () => isEnabled && onPress();
+  const handlePress = () => onPress();
 
   return (
-    <ButtonContainer style={[style]}>
-      <ButtonTouchable
-        color={color}
-        {...styleProps}
-        isEnabled={isEnabled}
-        onPress={handlePress}
-        activeOpacity={0.8}
-      >
-        {children && children}
-        <ButtonText color={color} {...styleProps}>
-          {text}
-        </ButtonText>
-      </ButtonTouchable>
-    </ButtonContainer>
+    <TouchableOpacity
+      onPress={handlePress}
+      activeOpacity={0.8}
+      style={[styles.button, generatedStyles.button, style]}
+      {...buttonProps}
+    >
+      {children && children}
+      <Text style={[styles.text, generatedStyles.text]}>{text}</Text>
+    </TouchableOpacity>
   );
 };
 

@@ -53,7 +53,7 @@ const ConfirmRawModal: ConfirmRawType = ({
         ≈{transactionData.usd} USD
       </SmallText>
 
-      <Button text={'send'} isPrimary onPress={() => console.log('hey')} />
+      <Button text={'send'} type="primary" onPress={() => console.log('hey')} />
       <SmallText style={style} {...styleProps}>
         This transaction is operated by
       </SmallText>

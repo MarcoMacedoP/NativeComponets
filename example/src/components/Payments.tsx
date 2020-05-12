@@ -59,7 +59,7 @@ export default () => {
         onPress={handleButtonPress}
         isLoading={isLoading}
         text="Aceptar"
-        isPrimary
+        type="primary"
       />
     </CardsContainer>
   );

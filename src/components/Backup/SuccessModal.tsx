@@ -22,7 +22,7 @@ export default ({ onCloseModal, isModalShowed }: SuccessModalProps) => (
       <Text>
         Te enviaremos las instruccciones a tu correo para recuperar tu cuenta.
       </Text>
-      <Button text="Continuar" isSecondaryDark onPress={onCloseModal} />
+      <Button text="Continuar" type="secondaryDark" onPress={onCloseModal} />
     </Container>
   </FullscreenModal>
 );

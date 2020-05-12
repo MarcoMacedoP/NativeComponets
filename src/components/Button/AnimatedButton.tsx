@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, Easing, ActivityIndicator } from 'react-native';
-import { ButtonTouchable, ButtonText } from './styles';
+import { Animated, Easing, ActivityIndicator, Text } from 'react-native';
+import { styles } from './styles';
 import { ButtonProps } from './types';
-import { useThemeColor } from '../../hooks/useThemeColor';
-import { ButtonContainer } from './styles';
+import { TouchableOpacity } from 'react-native';
+import { useButtonStyles } from './useButtonStyles';
 
-const AnimatedContainer = Animated.createAnimatedComponent(ButtonContainer);
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
 type Props = ButtonProps & {
   isLoading?: boolean;
@@ -20,16 +20,17 @@ const AnimatedButton: React.FC<Props> = ({
   shouldTriggerOnPressWhileLoading = false,
   text,
   style,
-  isEnabled = true,
+  type = 'primary',
   children,
-  ...styleProps
+  ...buttonProps
 }) => {
+  const generatedStyles = useButtonStyles(type);
   const [hasPressed, setHasPressed] = useState(false);
   const [shouldRenderIndicator, setShouldRenderIndicator] = useState<
     boolean | undefined
   >(false);
   const [widthAnim] = useState(new Animated.Value(0));
-  const color: any = useThemeColor(styleProps);
+
   const interpolatedWidth = widthAnim.interpolate({
     inputRange: [0, 1],
     outputRange: ['100%', '20%'],
@@ -57,25 +58,21 @@ const AnimatedButton: React.FC<Props> = ({
   };
 
   return (
-    <AnimatedContainer style={[style, animatedStyles]}>
-      <ButtonTouchable
-        color={color}
-        {...styleProps}
-        isEnabled={isEnabled}
-        onPress={handlePress}
-      >
-        {shouldRenderIndicator ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <>
-            {children}
-            <ButtonText color={color} {...styleProps}>
-              {text}
-            </ButtonText>
-          </>
-        )}
-      </ButtonTouchable>
-    </AnimatedContainer>
+    <AnimatedTouchable
+      style={[styles.button, generatedStyles.button, style, animatedStyles]}
+      onPress={handlePress}
+      activeOpacity={0.9}
+      {...buttonProps}
+    >
+      {shouldRenderIndicator ? (
+        <ActivityIndicator size="small" color="#fff" />
+      ) : (
+        <>
+          {children}
+          <Text style={[styles.text, generatedStyles.text]}>{text}</Text>
+        </>
+      )}
+    </AnimatedTouchable>
   );
 };
 export default AnimatedButton as React.FC<Props>;

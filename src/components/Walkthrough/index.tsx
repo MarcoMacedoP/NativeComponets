@@ -37,12 +37,7 @@ const Walkthrough: WalkthroughType = ({ data, onFinish }) => {
           <Dot isSelected={currentIndex === 1} />
           <Dot isSelected={currentIndex === 2} />
         </DotsContainer>
-        <Button
-          text="Continuar"
-          isEnabled={currentIndex === 2}
-          isPrimary
-          onPress={onFinish}
-        />
+        <Button text="Continuar" type="primary" onPress={onFinish} />
       </ControlsContainer>
     </Container>
   );

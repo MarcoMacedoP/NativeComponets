@@ -15,7 +15,6 @@ type BackupType = React.FC<Props>;
 
 /**
  *
- * @param {Props} props
  */
 const Backup: BackupType = ({ email = '', ...props }) => {
   return (
@@ -41,7 +40,11 @@ const Backup: BackupType = ({ email = '', ...props }) => {
             )}
           </FormContainer>
 
-          <Button text="Recuperar cuenta" isPrimary onPress={props.onSubmit} />
+          <Button
+            text="Recuperar cuenta"
+            type="primary"
+            onPress={props.onSubmit}
+          />
         </Content>
       </Container>
       <SuccessModal

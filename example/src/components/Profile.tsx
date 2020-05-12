@@ -39,11 +39,11 @@ export default ({ navigation }: { navigation: any }) => {
           </Card>
         </View>
 
-        <Button text="Abir un modal" onPress={toggleModal} isPrimary />
+        <Button text="Abir un modal" onPress={toggleModal} type="primary" />
         <Button
           text="Ir a otra pantalla"
           onPress={() => navigation.navigate('Keyboard')}
-          isSecondary
+          type="secondary"
           style={{ marginTop: 16 }}
         />
       </View>
