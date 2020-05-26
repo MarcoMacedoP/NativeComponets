@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    paddingHorizontal: 4,
     paddingVertical: 6,
   },
   errorLabel: {
