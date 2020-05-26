@@ -1,19 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState, useRef } from 'react';
-import {
-  View,
-  Dimensions,
-  Image,
-  Text,
-  Animated,
-  StyleSheet,
-} from 'react-native';
+import { View, Dimensions, Image, Text, StyleSheet } from 'react-native';
 import {
   Button,
   SwipeModal,
   Card,
   Input,
   LockIcon,
+  InputWithLabel,
 } from '@lomelidev/react-native-toopago-ui';
 
 export default ({ navigation }: { navigation: any }) => {
@@ -58,17 +52,15 @@ export default ({ navigation }: { navigation: any }) => {
           </Card>
         </View>
 
-        <Input placeholder="No ref value " />
-        <Input
+        <Input placeholder="No ref value" hasCenterText icon={LockIcon} />
+        <InputWithLabel label="Valor" />
+        <InputWithLabel
+          label="Hello there"
           placeholder="Some value"
           ref={inputRef}
           error={error}
-          icon={({ color }) => <LockIcon color={color} />}
-        >
-          {({ color }) => (
-            <Animated.Text style={[{ color }]}>Hello there</Animated.Text>
-          )}
-        </Input>
+          icon={LockIcon}
+        />
         <Button
           text="Toggle input error"
           type="error"

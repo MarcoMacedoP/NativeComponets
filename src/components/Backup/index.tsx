@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '../../styled-components';
 import { KeyIcon, CrossIcon, EmailIcon } from '../Icons';
 import Button from '../Button';
-import InputRounded from '../InputRounded';
+import { InputRounded } from '../Inputs/InputRounded';
 import SuccessModal, { SuccessModalProps } from './SuccessModal';
 type Props = SuccessModalProps & {
   onSubmit: () => void;
@@ -31,12 +31,11 @@ const Backup: BackupType = ({ email = '', ...props }) => {
               props.children
             ) : (
               <Input
+                icon={EmailIcon}
                 value={email}
                 onChangeText={props.onEmailChange}
                 placeholder="Ingresa el email de tu cuenta"
-              >
-                <EmailIcon />
-              </Input>
+              />
             )}
           </FormContainer>
 
@@ -85,7 +84,6 @@ const FormContainer = styled.View`
 const Input = styled(InputRounded)`
   align-self: flex-start;
   width: 100%;
-  margin-top: 16px;
 `;
 
 export default Backup as BackupType;

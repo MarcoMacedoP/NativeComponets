@@ -64,8 +64,8 @@ const Component = ()=> {
         </Input>
 )}
  ```
- - Input con error
- ![Image] (https://user-images.githubusercontent.com/45505161/82934843-c553eb00-9f51-11ea-811b-977b049f520b.png)
+ - Input con error 
+ - ![Image] (https://user-images.githubusercontent.com/45505161/82934843-c553eb00-9f51-11ea-811b-977b049f520b.png)
 - Input sin foco
   ![Image] (https://user-images.githubusercontent.com/45505161/82934967-f92f1080-9f51-11ea-8f61-51b1403e01f1.png)
 - Input con foco

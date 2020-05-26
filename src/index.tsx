@@ -7,13 +7,13 @@ import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
 import CreditCard from './components/CreditCard';
 import Backup from './components/Backup';
-import InputRounded from './components/InputRounded';
 import CheckedBox from './components/CheckedBox';
 import NumericKeyboard from './components/NumericKeyboard';
 import Carousel from './components/Carousel';
 
 import { Input } from './components/Inputs/Input';
-
+import { InputWithLabel } from './components/Inputs/InputWithLabel';
+import { InputRounded } from './components/Inputs/InputRounded';
 //drawer
 export * from './components/Drawer';
 
@@ -33,15 +33,17 @@ import { useTheme } from './hooks/useTheme';
 import { useThemeColor } from './hooks/useThemeColor';
 
 export {
-  Button,
+  //inputs
   Input,
+  InputWithLabel,
+  InputRounded,
+  Button,
   AnimatedButton,
   defaultTheme,
   ThemeProvider,
   Login,
   CheckedBox,
   Backup,
-  InputRounded,
   Signup,
   Walkthrough,
   CreditCard,

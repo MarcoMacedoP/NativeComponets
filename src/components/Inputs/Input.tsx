@@ -6,7 +6,6 @@ import {
   Animated,
   Easing,
   TextInputFocusEventData,
-  StyleProp,
   View,
 } from 'react-native';
 import { styles } from './styles';
@@ -21,11 +20,12 @@ type ChildrenRenderProps = {
   color: Animated.AnimatedInterpolation;
 };
 
-interface InputProps extends TextInputProps {
-  containerStyle?: StyleProp<Animated.AnimatedComponent<View>>;
+export interface InputProps extends TextInputProps {
+  containerStyle?: any;
   children?: (props: ChildrenRenderProps) => void;
   icon?: (props: ChildrenRenderProps) => React.ReactNode;
   error?: string | null;
+  hasCenterText?: boolean;
 }
 /**
  * Simple text-input component.
@@ -43,6 +43,7 @@ export const Input = React.forwardRef<TextInput, InputProps>(
       onBlur,
       children,
       style,
+      hasCenterText,
       containerStyle,
       ...inputProps
     },
@@ -118,7 +119,7 @@ export const Input = React.forwardRef<TextInput, InputProps>(
         <Animated.View
           style={[styles.container, animatedContainerStyles, containerStyle]}
         >
-          <View style={styles.row}>
+          <View style={[styles.row, hasCenterText && styles.containerCentered]}>
             {icon && (
               <View style={styles.iconContainer}>
                 {icon({ color: interpolatedColor })}
@@ -127,7 +128,11 @@ export const Input = React.forwardRef<TextInput, InputProps>(
             <AnimatedInput
               {...inputProps}
               ref={ref}
-              style={[styles.input, style, animatedInputStyles]}
+              style={[
+                hasCenterText ? styles.inputCentered : styles.input,
+                style,
+                animatedInputStyles,
+              ]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />

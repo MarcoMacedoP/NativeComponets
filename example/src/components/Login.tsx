@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import {
   ThemeProvider,
   Login,
-  InputRounded as InputBase,
+  InputRounded,
   EmailIcon,
   LockIcon,
 } from '@lomelidev/react-native-toopago-ui';
-import styled from 'styled-components/native';
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -27,28 +26,23 @@ export default function App() {
         onBackupAccount={emptyVoid}
         onCreateAccount={emptyVoid}
       >
-        <Input
+        <InputRounded
           placeholder="Email"
           autoFocus
           textContentType="emailAddress"
           value={email}
           onChangeText={setEmail}
-        >
-          <EmailIcon />
-        </Input>
+          icon={({ color }) => <EmailIcon color={color} />}
+        />
 
-        <Input
+        <InputRounded
           placeholder="Contraseña"
           secureTextEntry
+          icon={({ color }) => <LockIcon color={color} />}
           value={password}
           onChangeText={setPassword}
-        >
-          <LockIcon />
-        </Input>
+        />
       </Login>
     </ThemeProvider>
   );
 }
-const Input = styled(InputBase)`
-  margin-bottom: 16px;
-`;
