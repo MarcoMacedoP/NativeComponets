@@ -11,25 +11,49 @@ import {
 } from 'react-native';
 import { styles } from './styles';
 import { theme } from '../../styles/';
+import { ErrorLabel } from './ErrorLabel';
 const AnimatedInput: any = Animated.createAnimatedComponent(TextInput);
 
 const ANIMATION_TIME = 200;
 
 type InputEvent = NativeSyntheticEvent<TextInputFocusEventData>;
+type ChildrenRenderProps = {
+  color: Animated.AnimatedInterpolation;
+};
 
 interface InputProps extends TextInputProps {
   containerStyle?: StyleProp<Animated.AnimatedComponent<View>>;
-  children?: ({ color }: { color: Animated.AnimatedInterpolation }) => void;
+  children?: (props: ChildrenRenderProps) => void;
+  icon?: (props: ChildrenRenderProps) => React.ReactNode;
+  error?: string | null;
 }
+/**
+ * Simple text-input component.
+ * @param error (optional) A error to be displayed below the text input box
+ * @param children (optional) A render props function with the animated color in the props.
+ * @param containerStyle (optional) The styles for the container
+ * @param icon? (optional)  A render props function with the animated color in the props. This icon is displayed inside the box of the text input
+ */
 export const Input = React.forwardRef<TextInput, InputProps>(
   (
-    { onFocus, onBlur, children, style, containerStyle, ...inputProps },
+    {
+      icon,
+      error,
+      onFocus,
+      onBlur,
+      children,
+      style,
+      containerStyle,
+      ...inputProps
+    },
     ref
   ) => {
     const [animatedValue] = useState(new Animated.Value(1));
-    const interpolatedColor = animatedValue.interpolate({
-      inputRange: [1, 2],
-      outputRange: [theme.lightGray, theme.secondary],
+    const [colorValue] = useState(new Animated.Value(1));
+
+    const interpolatedColor = colorValue.interpolate({
+      inputRange: [1, 2, 3],
+      outputRange: [theme.lightGray, theme.secondary, theme.error],
     });
 
     const animatedContainerStyles = useMemo(
@@ -37,12 +61,12 @@ export const Input = React.forwardRef<TextInput, InputProps>(
         borderColor: interpolatedColor,
         color: interpolatedColor,
         marginVertical: animatedValue.interpolate({
-          inputRange: [1, 2],
-          outputRange: [4, 8],
+          inputRange: [1, 2, 3],
+          outputRange: [4, 8, 4],
         }),
         opacity: animatedValue.interpolate({
-          inputRange: [1, 2],
-          outputRange: [0.5, 1],
+          inputRange: [1, 2, 3],
+          outputRange: [0.5, 1, 1],
         }),
       }),
       [interpolatedColor, animatedValue]
@@ -50,29 +74,42 @@ export const Input = React.forwardRef<TextInput, InputProps>(
     const animatedInputStyles = useMemo(() => ({ color: interpolatedColor }), [
       interpolatedColor,
     ]);
+
+    const handleAnimation = (value: Animated.Value, toValue: number) => {
+      return Animated.timing(value, {
+        toValue,
+        duration: ANIMATION_TIME,
+        easing: Easing.linear,
+      });
+    };
+
+    const handleAnimations = useCallback(
+      (toValues: number[]) => {
+        Animated.parallel([
+          handleAnimation(colorValue, toValues[0]),
+          handleAnimation(animatedValue, toValues[1]),
+        ]).start();
+      },
+      [animatedValue, colorValue]
+    );
+
     const handleFocus = useCallback(
       (event: InputEvent) => {
-        Animated.timing(animatedValue, {
-          toValue: 2,
-          duration: ANIMATION_TIME,
-          easing: Easing.linear,
-        }).start();
+        handleAnimations([error ? 3 : 2, 2]);
         if (onFocus) {
           onFocus(event);
         }
       },
-      [animatedValue, onFocus]
+      [error, handleAnimations, onFocus]
     );
 
     const handleBlur = useCallback(
       (event: InputEvent) => {
-        Animated.timing(animatedValue, {
-          toValue: 1,
-          duration: ANIMATION_TIME,
-        }).start();
+        handleAnimations([error ? 3 : 1, 1]);
+
         if (onBlur) onBlur(event);
       },
-      [onBlur, animatedValue]
+      [handleAnimations, error, onBlur]
     );
 
     return (
@@ -81,13 +118,21 @@ export const Input = React.forwardRef<TextInput, InputProps>(
         <Animated.View
           style={[styles.container, animatedContainerStyles, containerStyle]}
         >
-          <AnimatedInput
-            {...inputProps}
-            ref={ref}
-            style={[style, animatedInputStyles]}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-          />
+          <View style={styles.row}>
+            {icon && (
+              <View style={styles.iconContainer}>
+                {icon({ color: interpolatedColor })}
+              </View>
+            )}
+            <AnimatedInput
+              {...inputProps}
+              ref={ref}
+              style={[styles.input, style, animatedInputStyles]}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+          </View>
+          <ErrorLabel error={error} />
         </Animated.View>
       </>
     );

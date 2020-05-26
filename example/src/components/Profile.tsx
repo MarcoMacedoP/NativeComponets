@@ -1,11 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState, useRef } from 'react';
-import { View, Dimensions, Image, Text, Animated } from 'react-native';
+import {
+  View,
+  Dimensions,
+  Image,
+  Text,
+  Animated,
+  StyleSheet,
+} from 'react-native';
 import {
   Button,
   SwipeModal,
   Card,
   Input,
+  LockIcon,
 } from '@lomelidev/react-native-toopago-ui';
 
 export default ({ navigation }: { navigation: any }) => {
@@ -16,6 +24,8 @@ export default ({ navigation }: { navigation: any }) => {
   const handleFocus = () => {
     inputRef && inputRef.current.getNode().focus();
   };
+  const defaultError = 'Campo invalido';
+  const [error, setError] = useState<string | null>(null);
   return (
     <View
       style={{
@@ -49,17 +59,37 @@ export default ({ navigation }: { navigation: any }) => {
         </View>
 
         <Input placeholder="No ref value " />
-        <Input placeholder="Some value" ref={inputRef}>
+        <Input
+          placeholder="Some value"
+          ref={inputRef}
+          error={error}
+          icon={({ color }) => <LockIcon color={color} />}
+        >
           {({ color }) => (
             <Animated.Text style={[{ color }]}>Hello there</Animated.Text>
           )}
         </Input>
         <Button
+          text="Toggle input error"
+          type="error"
+          onPress={() => {
+            if (!error) {
+              setError(defaultError);
+            } else setError(null);
+          }}
+        />
+        <Button
           text="Focus en button"
           type="secondaryDark"
           onPress={handleFocus}
+          style={styles.button}
         />
-        <Button text="Abir un modal" onPress={toggleModal} type="primary" />
+        <Button
+          text="Abir un modal"
+          onPress={toggleModal}
+          type="primary"
+          style={styles.button}
+        />
         <Button
           text="Ir a otra pantalla"
           onPress={() => navigation.navigate('Keyboard')}
@@ -73,3 +103,6 @@ export default ({ navigation }: { navigation: any }) => {
     </View>
   );
 };
+const styles = StyleSheet.create({
+  button: { marginTop: 16 },
+});
