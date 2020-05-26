@@ -6,7 +6,7 @@ type Props = {
 };
 export default function DotsIcon(props: Props) {
   return (
-    <Svg width="4" height="15" viewBox="0 0 4 15" style={props.style}>
+    <Svg viewBox="0 0 4 15" style={props.style}>
       <Defs>
         <ClipPath id="clip-path">
           <Rect width="4" height="15" fill="none" />

@@ -5,7 +5,6 @@ import ThemeProvider from './components/ThemeProvider';
 import Login from './components/LoginForm';
 import Signup from './components/SignupForm';
 import DiscountLabel from './components/DiscountLabel';
-import CreditCard from './components/CreditCard';
 import Backup from './components/Backup';
 import CheckedBox from './components/CheckedBox';
 import NumericKeyboard from './components/NumericKeyboard';
@@ -16,7 +15,8 @@ import { InputWithLabel } from './components/Inputs/InputWithLabel';
 import { InputRounded } from './components/Inputs/InputRounded';
 //drawer
 export * from './components/Drawer';
-
+//cards
+export * from './components/CreditCard';
 // Modals
 import ConfirmRawModal from './components/Modals/ConfirmRawModal';
 import FullscreenModal from './components/Modals/FullscreenModal';
@@ -46,7 +46,6 @@ export {
   Backup,
   Signup,
   Walkthrough,
-  CreditCard,
   DiscountLabel,
   ConfirmRawModal,
   FullscreenModal,

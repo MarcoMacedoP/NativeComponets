@@ -43,18 +43,8 @@ export default () => {
           { title: 'Example card', desc: 'This is the card description' },
         ]}
       />
-      <CreditCard
-        card="visa"
-        digits={123132112}
-        isChecked={isCardChecked}
-        onChecked={handleCheck}
-      />
-      <CreditCard
-        card="mastercard"
-        digits={123132112}
-        isChecked={isSecondCardChecked}
-        onChecked={handleSecondCheck}
-      />
+      <CreditCard card="VISA" digits={123132112} isEnabled={true} />
+      <CreditCard card="MASTERCARD" digits={123132112} />
       <AnimatedButton
         onPress={handleButtonPress}
         isLoading={isLoading}
