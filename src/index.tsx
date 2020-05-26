@@ -12,6 +12,8 @@ import CheckedBox from './components/CheckedBox';
 import NumericKeyboard from './components/NumericKeyboard';
 import Carousel from './components/Carousel';
 
+import { Input } from './components/Inputs/Input';
+
 //drawer
 export * from './components/Drawer';
 
@@ -32,6 +34,7 @@ import { useThemeColor } from './hooks/useThemeColor';
 
 export {
   Button,
+  Input,
   AnimatedButton,
   defaultTheme,
   ThemeProvider,

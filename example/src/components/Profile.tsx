@@ -1,12 +1,21 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
-import { Text, View, Dimensions, Image } from 'react-native';
-import { Button, SwipeModal, Card } from '@lomelidev/react-native-toopago-ui';
+import React, { useState, useRef } from 'react';
+import { View, Dimensions, Image, Text, Animated } from 'react-native';
+import {
+  Button,
+  SwipeModal,
+  Card,
+  Input,
+} from '@lomelidev/react-native-toopago-ui';
 
 export default ({ navigation }: { navigation: any }) => {
   const [isModalShowed, setIsModalShowed] = useState(false);
+  const inputRef = useRef<any>();
   const toggleModal = () => setIsModalShowed(!isModalShowed);
   const closeModal = () => setIsModalShowed(false);
+  const handleFocus = () => {
+    inputRef && inputRef.current.getNode().focus();
+  };
   return (
     <View
       style={{
@@ -39,6 +48,17 @@ export default ({ navigation }: { navigation: any }) => {
           </Card>
         </View>
 
+        <Input placeholder="No ref value " />
+        <Input placeholder="Some value" ref={inputRef}>
+          {({ color }) => (
+            <Animated.Text style={[{ color }]}>Hello there</Animated.Text>
+          )}
+        </Input>
+        <Button
+          text="Focus en button"
+          type="secondaryDark"
+          onPress={handleFocus}
+        />
         <Button text="Abir un modal" onPress={toggleModal} type="primary" />
         <Button
           text="Ir a otra pantalla"
