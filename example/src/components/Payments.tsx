@@ -17,22 +17,7 @@ export default () => {
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 2000);
   };
-  const handleCheck = (value: boolean) => {
-    if (isSecondCardChecked && value) {
-      setIsSecondCardChecked(false);
-      setIsCardChecked(true);
-    } else {
-      setIsCardChecked(value);
-    }
-  };
-  const handleSecondCheck = (value: boolean) => {
-    if (isCardChecked && value) {
-      setIsCardChecked(false);
-      setIsSecondCardChecked(true);
-    } else {
-      setIsSecondCardChecked(value);
-    }
-  };
+
   return (
     <CardsContainer>
       <Card
