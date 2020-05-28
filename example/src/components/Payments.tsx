@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-
 import {
   CreditCard,
   AnimatedButton,
-  Card,
   styled,
-  EmailIcon,
+  LoadingCards,
 } from '@lomelidev/react-native-toopago-ui';
 
 export default () => {
-  const [isCardChecked, setIsCardChecked] = useState(false);
-  const [isSecondCardChecked, setIsSecondCardChecked] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const handleButtonPress = () => {
     console.log('onPress');
@@ -20,14 +16,7 @@ export default () => {
 
   return (
     <CardsContainer>
-      <Card
-        isPrimary
-        onPress={() => console.log('')}
-        icon={EmailIcon}
-        content={[
-          { title: 'Example card', desc: 'This is the card description' },
-        ]}
-      />
+      <LoadingCards />
       <CreditCard card="VISA" digits={123132112} isEnabled={true} />
       <CreditCard card="MASTERCARD" digits={123132112} />
       <AnimatedButton

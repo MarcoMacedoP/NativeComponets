@@ -1,8 +1,7 @@
 import React from 'react';
 import Dots from '../Icons/Dots';
-import { Text, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { theme } from '../../styles';
-
+import { Text, Image, TouchableOpacity, View } from 'react-native';
+import { styles } from './styles';
 type Card = 'VISA' | 'MASTERCARD' | 'AMEX';
 
 type CreditCardProps = {
@@ -34,51 +33,3 @@ export const CreditCard: React.FC<CreditCardProps> = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  disabledCard: {
-    width: '100%',
-    opacity: 0.4,
-  },
-  container: {
-    width: '100%',
-  },
-  touchable: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    height: 60,
-    backgroundColor: theme.background,
-    borderColor: theme.lightGray,
-    marginVertical: 4,
-    paddingHorizontal: 4,
-    shadowColor: theme.black,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
-    borderRadius: 5,
-  },
-  image: {
-    resizeMode: 'contain',
-    flex: 0.6,
-    marginRight: 8,
-  },
-  numbers: {
-    color: theme.gray,
-    flex: 4,
-  },
-  dotsContainer: {
-    flex: 0.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-  },
-  dots: {
-    width: '30%',
-    height: '40%',
-  },
-});
