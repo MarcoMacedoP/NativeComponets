@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from '../../styled-components';
 import { CirlcesIcon } from '../Icons';
+import { ImageSourcePropType } from 'react-native';
 
-import { DrawerHeaderProps } from './CustomDrawerContent';
+type DrawerHeaderProps = {
+  userImageSource: ImageSourcePropType;
+  userName: string;
+};
 type DrawerHeaderType = React.FC<DrawerHeaderProps>;
 
 const NavbarHeader: DrawerHeaderType = props => {
   return (
     <SafeAreaView>
       <Container>
-        <Image source={props.userImageSource} />
+        <Image source={props.userImageSource} resizeMode="cover" />
         <Username>{props.userName}</Username>
       </Container>
       <StyledCircles />
@@ -27,6 +31,8 @@ const Container = styled.TouchableOpacity`
 `;
 const Image = styled.Image`
   max-height: 40px;
+  height: 40px;
+  width: 40px;
   max-width: 40px;
   border-radius: 700px;
 `;
