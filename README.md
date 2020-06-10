@@ -1,8 +1,8 @@
-# react-native-toopago-ui
+# Native Components
 
-Paquete de componentes ui para Toopago.
+React native component library.
 
-## Instalacion
+## Install
 
 Primero necesitas instalar el paquete principal
 
@@ -16,7 +16,7 @@ Despues de eso agregar `react-native-svg` para que los svg se muestren correctam
 npm install react-native-svg
 ```
 
-## Uso
+## Usage
 Antes de usar los componentes es necesario usar el HOC provider
 ```
 import { ThemeProvider } from '@lomelidev/react-native-toopago-ui';
@@ -38,7 +38,7 @@ Un componente que hace mas facil el manejo de inputs. Recibe todas las props del
  * containerStyle (optional) Estilos para el contenedor (View)
  * icon? (optional)  Render prop para mostrar un icono dentro del Input.
 
- ### Ejemplo
+ ### Example
  ```
 import React, {useEffect} from "react";
 import { Input, LockIcon } from '@lomelidev/react-native-toopago-ui';
